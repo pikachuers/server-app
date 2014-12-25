@@ -47,10 +47,10 @@ class CreateIntertransactionsTable extends Migration {
 		});
 
 		Schema::table('intertransactions', function(Blueprint $table){
-			$table->foreign('perpusa')->references('id')->on('libraries')->onDelete('set null');
-			$table->foreign('perpusb')->references('id')->on('libraries')->onDelete('set null');
-			$table->foreign('perpusc')->references('id')->on('libraries')->onDelete('set null');
-			$table->foreign('status')->references('id')->on('status')->onDelete('set null');
+			$table->foreign('perpusa')->references('id')->on('libraries');
+			$table->foreign('perpusb')->references('id')->on('libraries');
+			$table->foreign('perpusc')->references('id')->on('libraries');
+			$table->foreign('status')->references('id')->on('status');
 		});
 	}
 
