@@ -12,9 +12,21 @@ class CreateBooksTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('books', function(Blueprint $table)
+		Schema::create('books', function(Blueprint $table)
 		{
-			//
+			$table->engine="INNODB";
+			$table->increments('id');
+			$table->string('judul', 100);
+			$table->string('pengarang', 100);
+			$table->string('dcc_code', 20);
+			$table->string('penerbit', 100);
+			$table->string('edisi', 100)->nullable();
+			$table->string('tahun', 10);
+			$table->string('isbn', 100)->nullable();
+			$table->string('book_image_name', 200)->nullable();
+		//	$table->float('rating_cache')->default('0');
+		//	$table->integer('rating_count')->default('0');
+			$table->timestamps();
 		});
 	}
 

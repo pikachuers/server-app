@@ -31,7 +31,7 @@ class CreateIntertransactionsTable extends Migration {
 			$table->unsignedInteger('perpusc');
 			$table->unsignedInteger('perpusc_staff_id')->nullable();
 
-			$table->unsignedInteger('status');
+			$table->unsignedInteger('status_id');
 			$table->text('note')->nullable();
 
 			$table->date('tanggal_peminjaman')->nullable();
@@ -44,6 +44,13 @@ class CreateIntertransactionsTable extends Migration {
 			$table->double('denda')->nullable();
 
 			$table->timestamps();
+		});
+
+		Schema::table('intertransactions', function(Blueprint $table){
+			$table->foreign('perpusa')->references('id')->on('libraries')->onDelete('set null');
+			$table->foreign('perpusb')->references('id')->on('libraries')->onDelete('set null');
+			$table->foreign('perpusc')->references('id')->on('libraries')->onDelete('set null');
+			$table->foreign('status')->references('id')->on('status')->onDelete('set null');
 		});
 	}
 
