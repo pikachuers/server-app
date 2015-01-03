@@ -22,6 +22,7 @@ class RollbackTables extends Migration {
 	 */
 	public function down()
 	{
+		Schema::drop('interfee');
 		Schema::drop('intertransactions');
 		Schema::drop('collections');
 		Schema::drop('libraries');

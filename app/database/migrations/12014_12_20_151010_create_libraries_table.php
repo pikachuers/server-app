@@ -33,10 +33,7 @@ class CreateLibrariesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('libraries', function(Blueprint $table)
-		{
-			//
-		});
+
 	}
 
 }

@@ -50,7 +50,7 @@ class CreateIntertransactionsTable extends Migration {
 			$table->foreign('perpusa')->references('id')->on('libraries');
 			$table->foreign('perpusb')->references('id')->on('libraries');
 			$table->foreign('perpusc')->references('id')->on('libraries');
-			$table->foreign('status')->references('id')->on('status');
+			$table->foreign('status_id')->references('id')->on('status');
 		});
 	}
 
@@ -61,10 +61,8 @@ class CreateIntertransactionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('intertransactions', function(Blueprint $table)
-		{
-			//
-		});
+
+
 	}
 
 }
