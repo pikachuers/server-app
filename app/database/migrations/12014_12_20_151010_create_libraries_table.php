@@ -23,6 +23,7 @@ class CreateLibrariesTable extends Migration {
 			$table->string('secretCode', 100); 
 			//We use this secret rather than using URL because URL is not RELIABLE!
 			//Send this secret code along with request
+			$table->timestamps();
 		});
 	}
 
