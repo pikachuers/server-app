@@ -10,9 +10,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::post('library/addcollection'], function(){
+	
+});
+Route::get('/library/{key_perpustakaan}/action')
+
+Route::get('/search/{squery}', 'SearchController@search');
 
 Route::get('/scrap', function()
 {
-
 	return "asd";
 });

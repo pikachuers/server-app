@@ -22,6 +22,7 @@ class CreateInterfeeTable extends Migration {
 			$table->double('biaya');
 			$table->text('berita'); //Computer Generated plis.
 			$table->dateTime('waktu');
+			$table->unsignedInteger('step');
 			$table->timestamps();
 		});
 		Schema::table('interfee', function(Blueprint $table)
