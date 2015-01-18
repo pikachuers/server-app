@@ -20,9 +20,9 @@ class CreateLibrariesTable extends Migration {
 			$table->string('alamat', 100);
 			$table->string('telepon', 25);
 			$table->string('email', 100);
+			$table->string('url', 100);
 			$table->string('secretCode', 100); 
-			//We use this secret rather than using URL because URL is not RELIABLE!
-			//Send this secret code along with request
+
 			$table->timestamps();
 		});
 	}
