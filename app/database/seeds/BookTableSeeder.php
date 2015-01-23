@@ -987,13 +987,11 @@ class BookTableSeeder extends Seeder {
 		);
 		Book::create( //100
 			array(
-				'judul' => '',
-				'pengarang' => '',
-				'dcc_code' => '',
-				'penerbit' => '',
-				'edisi' => '',
-				'isbn' => '', //nullable
-				'tahun' => ''
+				'judul' => 'COBOL-80 : microsoft cobol-80 documentation, Cobol-80 reference manual',
+				'pengarang' => 'Microsoft',
+				'dcc_code' => '005.133 [COB]',
+				'penerbit' => 'Microsoft Press',
+				'tahun' => '1980'
 			)
 		);
 		//TO BE CONTINUE
