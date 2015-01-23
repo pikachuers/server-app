@@ -12,7 +12,7 @@
 */
 Route::post('library/validate', function(){
 	$perpuskey = Input::get('perpuskey');
-	$p = Perpustakaan::secret($perpuskey)->first();
+	$p = Library::secret($perpuskey)->first();
 	if($p){
 		return "true";
 	}
@@ -21,7 +21,7 @@ Route::post('library/validate', function(){
 Route::post('library/addcollection', function(){
 	$perpuskey = Input::get('perpuskey');
 	$idbuku = Input::get('idbuku');
-	$p = Perpustakaan::secret($perpuskey)->first();
+	$p = Library::secret($perpuskey)->first();
 	
 	$c = Collection::where('library_id', '=', $p->id)->where('book_id', '=', $idbuku)->first();;
 	if($c){
