@@ -24,8 +24,7 @@ class CreateBooksTable extends Migration {
 			$table->string('tahun', 10);
 			$table->string('isbn', 100)->nullable();
 			$table->string('book_image_name', 200)->nullable();
-		//	$table->float('rating_cache')->default('0');
-		//	$table->integer('rating_count')->default('0');
+
 			$table->timestamps();
 		});
 	}
