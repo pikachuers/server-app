@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('BookTableSeeder');
-		Perpustakaan::create([
+		Library::create([
 			'nama' => 'Perpustakaan BPAD Jakarta TimurTenggara',
 			'alamat' => 'Jalan Kenangan Indah',
 			'telepon' => '080988722819',
