@@ -24,7 +24,7 @@ class BookTableSeeder extends Seeder {
 				'pengarang' => 'David A. Lien',
 				'dcc_code' => '005.133 03',
 				'penerbit' => 'Compusoft Publishing',
-				'edisi' => '2' //nullable
+				'edisi' => '2', //nullable
 				'isbn' => '0932760058', //nullable
 				'tahun' => '1981'
 			)
@@ -35,7 +35,7 @@ class BookTableSeeder extends Seeder {
 				'pengarang' => 'Lawrence S.Orilia  Nancy B.Stern  Robert  A. Stern',
 				'dcc_code' => '658.05',
 				'penerbit' => 'John Wiley & Sons, Inc',
-				'edisi' => '2' //nullable
+				'edisi' => '2', //nullable
 				'isbn' => '0471042544', //nullable
 				'tahun' => '1977'
 			)
@@ -958,7 +958,7 @@ class BookTableSeeder extends Seeder {
 		);
 		Book::create( //97
 			array(
-				'judul' => 'The psychology of computer programming ',
+				'judul' => 'The psychology of computer programming',
 				'pengarang' => 'Gerald M. Weinberg',
 				'dcc_code' => '005.13',
 				'penerbit' => 'Van Nostrand Reinhold',
@@ -1302,7 +1302,6 @@ class BookTableSeeder extends Seeder {
 				'pengarang' => 'S. M. Gee',
 				'dcc_code' => '005.265',
 				'penerbit' => 'Granada',
-				'edisi' => '',
 				'isbn' => '0246120258',
 				'tahun' => '1983'
 			)
@@ -1877,8 +1876,6 @@ class BookTableSeeder extends Seeder {
 				'pengarang' => 'Gordon B. Davis  Penterjemah  Bob Widyahartono',
 				'dcc_code' => '658.403 801 1',
 				'penerbit' => 'Pustaka Binaman Pressindo',
-				'edisi' => '',
-				'isbn' => '',
 				'tahun' => '1984'
 			)
 		);
