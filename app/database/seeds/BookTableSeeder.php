@@ -225,7 +225,7 @@ class BookTableSeeder extends Seeder {
 		Book::create( //22
 			array(
 				'judul' => 'Business programming : fortran  IV',
-				'pengarang' => 'Nesa L abbe Wu', //L'abbe (seharusnya)
+				'pengarang' => "Nesa L'abbe Wu",
 				'dcc_code' => '005.133 [FOR]',
 				'penerbit' => 'Wm. C. Brown',
 				'edisi' => '2',
@@ -560,7 +560,7 @@ class BookTableSeeder extends Seeder {
 		);
 		Book::create( //56
 			array(
-				'judul' => 'Schaum s outline series theory and problems of operations research',//Schaum's
+				'judul' => "Schaum's outline series theory and problems of operations research",
 				'pengarang' => 'Richard Bronson',
 				'dcc_code' => '001.422',
 				'penerbit' => 'McGraw Hill',
@@ -709,7 +709,7 @@ class BookTableSeeder extends Seeder {
 		);
 		Book::create( //71
 			array(
-				'judul' => 'Schaum s outline of theory and  problems of accounting II',//Schaum's
+				'judul' => "Schaum's outline of theory and  problems of accounting II",
 				'pengarang' => 'James A. Cashin  Joel J. Lerner',
 				'dcc_code' => '657',
 				'penerbit' => 'McGraw Hill',
@@ -994,6 +994,1511 @@ class BookTableSeeder extends Seeder {
 				'tahun' => '1980'
 			)
 		);
-		//TO BE CONTINUE
+		Book::create(
+			array(
+				'judul' => 'Pelajaran elektronika  : pengolah mikro / komputer mikro',
+				'pengarang' => 'Wasito S',
+				'dcc_code' => '621.391 6',
+				'penerbit' => 'Karya Utama',
+				'edisi' => '2',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'How to computerize your small business',
+				'pengarang' => 'Jules A. Cohen  Catherine Scott Mckinney',
+				'dcc_code' => '658.05',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0134038576',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Management information systems : conceptual foundations, structure, and development',
+				'pengarang' => 'Gordon B. Davis',
+				'dcc_code' => '658.403 8',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070158274',
+				'tahun' => '1974'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Accounting principles',
+				'pengarang' => 'Philip E. Fess  C. Rollin Niswonger',
+				'dcc_code' => '657',
+				'penerbit' => 'South-Western Publishing',
+				'edisi' => '13',
+				'tahun' => '-'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Accounting and information systems',
+				'pengarang' => 'John R. Page  H. Paul Hooper',
+				'dcc_code' => '657.028 5',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835900827',
+				'tahun' => '1979'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Accounting information systems and business organizations',
+				'pengarang' => 'Barry E. Cushing  Marshall B. Romney',
+				'dcc_code' => '657.028 5',
+				'penerbit' => 'Addison-Wesley',
+				'edisi' => '4',
+				'isbn' => '0201103176',
+				'tahun' => '1987'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Kalkulus: jilid satu',
+				'pengarang' => 'Moedomo ... [et al.]',
+				'dcc_code' => '515',
+				'penerbit' => 'Penerbit Institut Teknologi Bandung',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'SPSS introductory guide : bacis statistics and operations',
+				'pengarang' => 'Marija J. Norusis',
+				'dcc_code' => '005.302 1',
+				'penerbit' => 'Sine Nomine',
+				'tahun' => '-'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Linear programming and economic analysis',
+				'pengarang' => 'Robert Dorfman  Paul A. Samuelson  Robert M. Solow',
+				'dcc_code' => '519.72',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '070176213',
+				'tahun' => '1958'
+			)
+		);
+		Book::create( //110
+			array(
+				'judul' => 'Background math for a computer world',
+				'pengarang' => 'Ruth Ashley',
+				'dcc_code' => '519',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471035068',
+				'tahun' => '1973'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Kewiraan untuk mahasiswa',
+				'pengarang' => 'Lemhannas',
+				'dcc_code' => '320.12',
+				'penerbit' => 'PT. Gramedia Pustaka Utama',
+				'tahun' => '1985'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Budgeting : profit planning and control',
+				'pengarang' => 'Glenn A. Welsch',
+				'dcc_code' => '658.154',
+				'penerbit' => 'Prentice Hall',
+				'edisi' => '4',
+				'isbn' => '0876921314',
+				'tahun' => '1984'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Pengantar metodologi research sosial',
+				'pengarang' => 'Kartini Kartono',
+				'dcc_code' => '001.42',
+				'penerbit' => 'Alumni',
+				'tahun' => '1983'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Digital circuits and logic design',
+				'pengarang' => 'Samuel C. Lee',
+				'dcc_code' => '621.395',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0876921497',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Introduction to digital computer technology',
+				'pengarang' => 'Louis Nashelsky',
+				'dcc_code' => '621.39',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'edisi' => '2',
+				'tahun' => '1977'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Digital logic and computer design',
+				'pengarang' => 'M. Morris Mano',
+				'dcc_code' => '621.392',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0132143380',
+				'tahun' => '1979'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Accounting information systems and business organizations',
+				'pengarang' => 'Barry E. Cushing',
+				'dcc_code' => '657.028 5',
+				'penerbit' => 'Addison-Wesley',
+				'edisi' => '2',
+				'isbn' => '02010106X',
+				'tahun' => '1978'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Introduction to operations research and management science : a general systems approach',
+				'pengarang' => 'James L. Riggs  Michael S. Inoue',
+				'dcc_code' => '658.403 4',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070528705',
+				'tahun' => '1975'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'An introductory approach to operations research',
+				'pengarang' => 'Robert J. Thierauf',
+				'dcc_code' => '658.403 4',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471031259',
+				'tahun' => '1978'
+			)
+		);
+		Book::create( //120
+			array(
+				'judul' => 'Introduction to management information systems',
+				'pengarang' => 'Robert G. Murdick  Joel E. Ross',
+				'dcc_code' => '658.403 8',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0134862333',
+				'tahun' => '1977'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => "Schaum's outline of theory and problems of accounting I",
+				'pengarang' => 'James A. Cashin  Joel J. Lerner',
+				'dcc_code' => '657',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '2',
+				'isbn' => '0070102511',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Theory and problems of digital principles',
+				'pengarang' => 'Roger L. Tokheim',
+				'dcc_code' => '621.381 5',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070649286',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Statistics for business',
+				'pengarang' => 'Byron L. Newton',
+				'dcc_code' => '519.5',
+				'penerbit' => 'Science Research Associates',
+				'isbn' => '0574184651',
+				'tahun' => '1973'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => "Logic & memory experiments using TTL IC'S",
+				'pengarang' => 'David G. Larsen  Peter R. Rony',
+				'dcc_code' => '621.395',
+				'penerbit' => 'Howard W.Sams & Co',
+				'isbn' => '067221542X',
+				'tahun' => '1978'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Business mathematics',
+				'pengarang' => 'L. W. T. Stafford',
+				'dcc_code' => '510',
+				'penerbit' => 'Mackdonald  and Evans',
+				'edisi' => '2',
+				'isbn' => '0712102825',
+				'tahun' => '1969'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Computing problems for Fortran solution',
+				'pengarang' => 'Robert Teague',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Canfield  Press',
+				'isbn' => '063886723',
+				'tahun' => '1972'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'TTL Cookbook',
+				'pengarang' => 'Don Lancaster',
+				'dcc_code' => '621.395',
+				'penerbit' => 'Howard W.Sams & Co',
+				'edisi' => '1',
+				'isbn' => '0672210355',
+				'tahun' => '1974'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Pulse & Switching circuits',
+				'pengarang' => 'Harvey F. Swearer',
+				'dcc_code' => '621.381 534',
+				'penerbit' => 'Foulsham-tab  limited',
+				'isbn' => '0704201518',
+				'tahun' => '1975'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Computer languages and their uses',
+				'pengarang' => 'Garry Marshall',
+				'dcc_code' => '005.13',
+				'penerbit' => 'Granada',
+				'isbn' => '0246120223',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( //130
+			array(
+				'judul' => 'Introduction to the design and analysis of algorithms',
+				'pengarang' => 'S. E. Goodman  S. T. Hedetniemi',
+				'dcc_code' => '005.1',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070237530',
+				'tahun' => '1977'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'The spectrum programmer',
+				'pengarang' => 'S. M. Gee',
+				'dcc_code' => '005.265',
+				'penerbit' => 'Granada',
+				'edisi' => '',
+				'isbn' => '0246120258',
+				'tahun' => '1983'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Management',
+				'pengarang' => 'James A. F. Stoner',
+				'dcc_code' => '658',
+				'penerbit' => 'Prentice Hall',
+				'edisi' => '2',
+				'isbn' => '013549642x',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Guide to CMOS basics, circuits, &  experiments',
+				'pengarang' => 'Howard M. Berlin',
+				'dcc_code' => '621.397 32',
+				'penerbit' => 'Howard W.Sams & Co',
+				'isbn' => '067221654x',
+				'tahun' => '1979'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => '101 Color Computer Programming Tips & Tricks',
+				'pengarang' => 'Ron Clark',
+				'dcc_code' => '005.3',
+				'penerbit' => 'Arco Publishing',
+				'isbn' => '0866680071',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Taming your computer : a guide for business and proffesional people  ',
+				'pengarang' => 'Jerome Kanter',
+				'dcc_code' => '005',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0138843953',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Advanced basic : applications and problems',
+				'pengarang' => 'James S. Coan',
+				'dcc_code' => '005.131',
+				'penerbit' => 'Hayden Book Company',
+				'isbn' => '0810458551',
+				'tahun' => '1977'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Electronic computer technology',
+				'pengarang' => 'Norman R. Scott',
+				'dcc_code' => '621.39',
+				'penerbit' => 'McGraw Hill',
+				'tahun' => '1970'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Managing the data resource function',
+				'pengarang' => 'Richard L. Nolan : Editor',
+				'dcc_code' => '658.403 8',
+				'penerbit' => 'West Publishing',
+				'isbn' => '0829900039',
+				'tahun' => '1974'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Operating system',
+				'pengarang' => 'Sudiyanto',
+				'dcc_code' => '005.43',
+				'penerbit' => 'Yayasan Pembinaan Keluarga UPN  Veteran',
+				'tahun' => '1982'
+			)
+		);
+		Book::create( //140
+			array(
+				'judul' => 'Principles of data processing',
+				'pengarang' => 'Robert A. Stern  Nancy B. Stern',
+				'dcc_code' => '004',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'edisi' => '2',
+				'isbn' => '0471016969',
+				'tahun' => '1979'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Digital circuits and microprocessors',
+				'pengarang' => 'Herbert Taub',
+				'dcc_code' => '621.381 5',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '070665958',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Information Processing',
+				'pengarang' => 'Marilyn Bohl',
+				'dcc_code' => '005',
+				'penerbit' => 'Science Research Associates',
+				'edisi' => '3',
+				'isbn' => '0574212655',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Information systems : theory and practice',
+				'pengarang' => 'John  G.Burch  Felix R.Straler  Gary  Grudniski',
+				'dcc_code' => '658.403 8',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'edisi' => '2',
+				'tahun' => '1979'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Introduction to IBM direct access storage devices',
+				'pengarang' => 'Marilyn Bohl',
+				'dcc_code' => '005.74',
+				'penerbit' => 'Science Research Associates',
+				'isbn' => '0574211403',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Fifty basic exercises',
+				'pengarang' => 'Jean-Pierre Lamoitier',
+				'dcc_code' => '005.3',
+				'penerbit' => 'Sybex',
+				'isbn' => '0895880563',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'The home computer book',
+				'pengarang' => 'Len Buckwalter',
+				'dcc_code' => '004',
+				'penerbit' => 'A Wallaby Book',
+				'isbn' => '0671790293',
+				'tahun' => '1978'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'The ZX Spectrum : and How To get Most From it',
+				'pengarang' => 'Ian Sinclair',
+				'dcc_code' => '005.265',
+				'penerbit' => 'Granada',
+				'isbn' => '0246120185',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => '8085A CookBook',
+				'pengarang' => 'Christopher A Titus  David G. Larssen  Jonathan A.Titus',
+				'dcc_code' => '621.391',
+				'penerbit' => 'Howard W.Sams & Co',
+				'isbn' => '0672216973',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'An introduction to linear programming and game theory',
+				'pengarang' => 'Paul R. Thie',
+				'dcc_code' => '519.72',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'tahun' => '1979'
+			)
+		);
+		Book::create( //150
+			array(
+				'judul' => 'Programming Microcomputers With PASCAL',
+				'pengarang' => 'M.D.Beer',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Granada',
+				'isbn' => '0046116196',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Guide to fundamentals of application and system training',
+				'pengarang' => 'IBM',
+				'dcc_code' => '005',
+				'penerbit' => 'International Business Machines',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Apple graphics games',
+				'pengarang' => 'Paul Coletta',
+				'dcc_code' => '794.8',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835903257',
+				'tahun' => '1983'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'A fortran IV primer',
+				'pengarang' => 'Elliott I. Organick',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Addison-Wesley',
+				'tahun' => '1966'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Management P.',
+				'pengarang' => 'Eddy Santoso',
+				'dcc_code' => '658',
+				'penerbit' => 'Akademi Teknik Komputer',
+				'tahun' => '1984'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Structured cobol for data processing',
+				'pengarang' => 'Norman R. Lyons',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Glencoe/McGraw-Hill',
+				'isbn' => '0024707708',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => "Business system buyer's guide",
+				'pengarang' => 'Adam Osborne  Steven Cook',
+				'dcc_code' => '004',
+				'penerbit' => 'Osbourne',
+				'isbn' => '0931988470',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Computer organization and programming',
+				'pengarang' => 'C. William Gear',
+				'dcc_code' => '004',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '3',
+				'isbn' => '0070230420',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Prinsip dan teknik manajemen',
+				'pengarang' => 'Santanoe Kertonegoro',
+				'dcc_code' => '658',
+				'penerbit' => 'Sine Nomine',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Computing with : fortran IV : a practical course',
+				'pengarang' => 'Donald M. Monro',
+				'dcc_code' => '005.131',
+				'penerbit' => 'Edward  Arnold',
+				'isbn' => '0713125462',
+				'tahun' => '1977'
+			)
+		);
+		Book::create( //160
+			array(
+				'judul' => 'Business system analysis and design',
+				'pengarang' => 'Gary B. Shelly  Thomas J. Cashman',
+				'dcc_code' => '005.12',
+				'penerbit' => 'Anaheim Publishing Company',
+				'isbn' => '0882360434',
+				'tahun' => '1975'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Linear Programming : methods and applications',
+				'pengarang' => 'Saul I. Gass',
+				'dcc_code' => '519.72',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '3',
+				'tahun' => '1958'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Comprehensive computer studies',
+				'pengarang' => 'Peter Bishop',
+				'dcc_code' => '005',
+				'penerbit' => 'Edward  Arnold',
+				'isbn' => '071310371X',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'COBOL : a structured approach',
+				'pengarang' => 'Thomas C. Richards  Robert S. Cheney',
+				'dcc_code' => '005.133 [COB]',
+				'penerbit' => 'Charles  E.Merrill  publishing',
+				'isbn' => '067508041X',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Methodical programming in Cobol',
+				'pengarang' => 'Ray Welland',
+				'dcc_code' => '005.133 [COB]',
+				'penerbit' => 'Pitman Publishing',
+				'edisi' => '1',
+				'isbn' => '0273018205',
+				'tahun' => '1983'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Computer programming : RPG II',
+				'pengarang' => 'Gary B. Shelly  Thomas J. Cashman',
+				'dcc_code' => '005.133 [PRO]',
+				'penerbit' => 'Anaheim Publishing Company',
+				'isbn' => '0882362267',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Fundamental of operating system',
+				'pengarang' => 'Andrew Martin Lister',
+				'dcc_code' => '005.43',
+				'penerbit' => 'Macmillan',
+				'edisi' => '2',
+				'isbn' => '0333272870',
+				'tahun' => '1990'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Fortran 77 : principles of programming',
+				'pengarang' => 'Jerrold L. Wagener',
+				'dcc_code' => '005.133 [FOR]',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471044741',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => '370/360 Assembler language programming',
+				'pengarang' => 'Nancy Stern  Alden Sager  Robert A. Stern',
+				'dcc_code' => '005.133 [PRO]',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471034290',
+				'tahun' => '1979'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Readings in management information systems',
+				'pengarang' => 'Edited : Gordon B. Davis  Gordon C. Everest',
+				'dcc_code' => '658.403 8',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070158355',
+				'tahun' => '1976'
+			)
+		);
+		Book::create( //170
+			array(
+				'judul' => 'Fortran IV programming',
+				'pengarang' => 'Th. Widia S.',
+				'dcc_code' => '005.133 [FOR]',
+				'penerbit' => 'STMIK Bina Nusantara',
+				'tahun' => '1985'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Computer applications of numerical methods',
+				'pengarang' => 'Shan S. Kuo',
+				'dcc_code' => '003.3',
+				'penerbit' => 'Addison-Wesley',
+				'tahun' => '1972'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'IBM system/34 source entry utility reference manual',
+				'pengarang' => 'International Business Machines',
+				'dcc_code' => '005.245 [IBM]',
+				'penerbit' => 'IBM Corporation Pub.',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => '6502 applications book',
+				'pengarang' => 'Rodney Zaks',
+				'dcc_code' => '005.36',
+				'penerbit' => 'Sybex',
+				'isbn' => '0895880156',
+				'tahun' => '1984'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Element of numerical analysis',
+				'pengarang' => 'Peter Henrici',
+				'dcc_code' => '519.4',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471372382',
+				'tahun' => '1964'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Linear programming : an emphasis on decision making',
+				'pengarang' => 'Ann J. Hughes  Dennis E. Grawiog',
+				'dcc_code' => '519.72',
+				'penerbit' => 'Addison-Wesley',
+				'tahun' => '1973'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Database : structured techniques for design, performance, and management with case studies',
+				'pengarang' => 'S. Atre',
+				'dcc_code' => '005.740 68',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471052671',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Data communications and teleprocessing system',
+				'pengarang' => 'Trevor Housley',
+				'dcc_code' => 'Stephen F. Love.',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0131973681',
+				'tahun' => '1979'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Systems Analysis',
+				'pengarang' => 'Andrew Parkin',
+				'dcc_code' => '003',
+				'penerbit' => 'Edward  Arnold',
+				'isbn' => '0713128003',
+				'tahun' => '1980'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Inventory control',
+				'pengarang' => 'Stephen F. Love.',
+				'dcc_code' => '658.787',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070387826',
+				'tahun' => '1979'
+			)
+		);
+		Book::create( //180
+			array(
+				'judul' => 'Accounting and information systems',
+				'pengarang' => 'Joseph W. Wilkinson',
+				'dcc_code' => '657.028 5',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471049867',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'The art of computer programming : fundamental algorithms',
+				'pengarang' => 'Donald E. Knuth',
+				'dcc_code' => '005.1',
+				'penerbit' => 'Addison-Wesley',
+				'edisi' => '2',
+				'isbn' => '0201038099',
+				'tahun' => '1973'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'A casebook for management information systems',
+				'pengarang' => 'Henry  C. Lucas, Jr.  Cyrus  F. Gibson',
+				'dcc_code' => '658.403 8',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '2',
+				'isbn' => '007038939X',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Understanding Cobol ',
+				'pengarang' => 'Richard G. Peddicord',
+				'dcc_code' => '005.133 [COB]',
+				'penerbit' => 'Alfred  publishing',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Modern data processing',
+				'pengarang' => 'Robert R. Arnold  Harold C. Hill  Aylmer V. Nichols',
+				'dcc_code' => '004',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'edisi' => '3',
+				'tahun' => '1978'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Fortran : programs for scientists and engineers',
+				'pengarang' => 'Alan R. Miller',
+				'dcc_code' => '005.133 [FOR]',
+				'penerbit' => 'Sybex',
+				'isbn' => '0895880822',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Cobol programming : jilid II',
+				'pengarang' => 'Th. Widia S.  F.X. Soehartono',
+				'dcc_code' => '005.133 [COB]',
+				'penerbit' => 'STMIK Bina Nusantara',
+				'tahun' => '1984'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Cobol programming : jilid I',
+				'pengarang' => 'Th. Widia S.',
+				'dcc_code' => '005.133 [COB]',
+				'penerbit' => 'STMIK Bina Nusantara',
+				'tahun' => '1984'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Understanding fortran',
+				'pengarang' => 'Herbert R. Ludwig',
+				'dcc_code' => '005.133 [FOR]',
+				'penerbit' => 'Alfred  publishing',
+				'isbn' => '0882841483',
+				'tahun' => '1981'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Kerangka dasar sistem informasi manajemen : bagian II struktur dan pengembangannya',
+				'pengarang' => 'Gordon B. Davis  Penterjemah  Bob Widyahartono',
+				'dcc_code' => '658.403 801 1',
+				'penerbit' => 'Pustaka Binaman Pressindo',
+				'edisi' => '',
+				'isbn' => '',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( //190
+			array(
+				'judul' => 'Pengantar Fortran',
+				'pengarang' => 'Roger Hutty',
+				'dcc_code' => '005.133 [FOR]',
+				'penerbit' => 'Erlangga',
+				'tahun' => '1984'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'The IBM personal computer',
+				'pengarang' => 'Robert J. Traister',
+				'dcc_code' => '005.245',
+				'penerbit' => 'TAB Books',
+				'isbn' => '0830626964',
+				'tahun' => '1983'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Introductory finite mathematics with computing',
+				'pengarang' => 'William S. Dorn  Daniel D. McCracken',
+				'dcc_code' => '510',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471219215',
+				'tahun' => '1976'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Theory and problems of linear algebra',
+				'pengarang' => 'Seymour Lipschutz',
+				'dcc_code' => '512.5',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '007990123',
+				'tahun' => '1968'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'The world processing handbook',
+				'pengarang' => 'Russell Allen Stultz',
+				'dcc_code' => '652.5',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0139634541',
+				'tahun' => '1982'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Troubleshooting and repairing personal computers',
+				'pengarang' => 'Art Margolis',
+				'dcc_code' => '621.398',
+				'penerbit' => 'TAB Books',
+				'edisi' => '1',
+				'isbn' => '0830601392',
+				'tahun' => '1983'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Aljabar linier',
+				'pengarang' => 'R. Darodjat  M. Margha',
+				'dcc_code' => '512.5',
+				'penerbit' => 'STMIK Bina Nusantara',
+				'tahun' => '1984'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Design of digital computers : an introduction',
+				'pengarang' => 'Hans W. Gschwind',
+				'dcc_code' => '621.392',
+				'penerbit' => 'Springer-Verlag',
+				'tahun' => '1967'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => 'Fortran 77 : a structured, disciplined style based on 1977 American National standard fortran and compatible with watfor, watfivm watfiv-s and m77 fortran compilers',
+				'pengarang' => 'Gordon B. Davis  Thomas R. Hoffmann',
+				'dcc_code' => '005.133',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '2',
+				'isbn' => '0830601392',
+				'tahun' => '1983'
+			)
+		);
+		Book::create(
+			array(
+				'judul' => "6502 user's manual",
+				'pengarang' => 'Joseph J. Carr',
+				'dcc_code' => '004',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835970027',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( //200
+			array(
+				'judul' => 'Behavior in organizations',
+				'pengarang' => 'Lyman W. Porter  Edward E. Lawler III  J. Richard Hackman',
+				'dcc_code' => '658',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070505276',
+				'tahun' => '1975'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Information systems design',
+				'pengarang' => 'Cyril H. P. Brookes  Phillip J. Grouse  D. Ross Jeffery [et.al]',
+				'dcc_code' => '004.21',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0724806415',
+				'tahun' => '1982'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Golden delicious games for the APPLE Computer',
+				'pengarang' => 'Howard Franklin  Joanne Koltnow  Leroy Finkel',
+				'dcc_code' => '005.265',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471090832',
+				'tahun' => '1982'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'The art of computer programming. volume 3 sorting and searching',
+				'pengarang' => 'Donald E. Knuth',
+				'dcc_code' => '005.1',
+				'penerbit' => 'Addison-Wesley',
+				'isbn' => '020103803X',
+				'tahun' => '1973'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Perilaku organisasi : konsep dasar dan aplikasinya',
+				'pengarang' => 'Miftah Thoha',
+				'dcc_code' => '658',
+				'penerbit' => 'CV . Rajawali',
+				'isbn' => '9794210153',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Pascal for Fortran programmers',
+				'pengarang' => 'Ronald H. Perrott  Donald C. S. Allison',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Computer Scince Press',
+				'isbn' => '0914894099',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'A guide to PL/I and structured programming',
+				'pengarang' => 'Seymour V. Pollack  Theodor D. Sterling',
+				'dcc_code' => '005.133 [PL]',
+				'penerbit' => 'Holt, Rinehart  and  Winston, inc',
+				'edisi' => '3',
+				'isbn' => '003558212',
+				'tahun' => '1980'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Principles of compiler design',
+				'pengarang' => 'Alfred V. Aho  Jeffrey D. Ullman',
+				'dcc_code' => '005.453',
+				'penerbit' => 'Addison-Wesley',
+				'isbn' => '0201100738',
+				'tahun' => '1977'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Organizations : theory and behavior',
+				'pengarang' => 'Herbert G. Hicks  C. Ray Gullett',
+				'dcc_code' => '658.001',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070287309',
+				'tahun' => '1975'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Numerical Analysis : with the TI-99/4A, Commodore 64, Apple II Plus/IIe, TRS-80 model I/III',
+				'pengarang' => 'H. R Meck',
+				'dcc_code' => '519.402 85',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0136266312',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( //210
+			array(
+				'judul' => 'Computers in action : how computers work',
+				'pengarang' => 'Donald D. Spencer',
+				'dcc_code' => '005',
+				'penerbit' => 'Hayden Book Company',
+				'edisi' => '2',
+				'isbn' => '0810457571',
+				'tahun' => '1974'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Management and organization',
+				'pengarang' => 'Louis A. Allen',
+				'dcc_code' => '658',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '007Y850127',
+				'tahun' => '1958'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Problem solving in Apple Pascal',
+				'pengarang' => 'Lowell A. Carmony ... [et al.]',
+				'dcc_code' => '005.265',
+				'penerbit' => 'Computer Science Press',
+				'isbn' => '0881750069',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Writing with a word processor : communication in the computer age',
+				'pengarang' => 'Eric D. Brown',
+				'dcc_code' => '652',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835988570',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Microprocessor system design concepts',
+				'pengarang' => 'Nikitas A. Alexandridis',
+				'dcc_code' => '621.392',
+				'penerbit' => 'Computer Science Press',
+				'isbn' => '0914894668',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Accounting information systems : theory and practice',
+				'pengarang' => 'Frederick H. Wu',
+				'dcc_code' => '657.028 5',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070721211',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'How to prepare for the graduate management admission test',
+				'pengarang' => 'Michael Randall  Morris Bramson  Morton Selub',
+				'dcc_code' => '658.007 6',
+				'penerbit' => 'Harcourt  Brace  Jovanovich',
+				'isbn' => '0156000202',
+				'tahun' => '1981'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Information systems concepts for management',
+				'pengarang' => 'Henry C. Lucas, Jr.',
+				'dcc_code' => '658.403 88',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '2',
+				'isbn' => '0070389241',
+				'tahun' => '1982'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Statistical Programs in Basic',
+				'pengarang' => 'Ronald D. Schwartz  David T. Basso',
+				'dcc_code' => '005.302 1',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835971066',
+				'tahun' => '1985'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Designing microcomputer systems',
+				'pengarang' => 'Udo W. Pooch  Rahul Chattergy',
+				'dcc_code' => '621.392',
+				'penerbit' => 'Hayden Book Company',
+				'isbn' => '0810456796',
+				'tahun' => '1979'
+			)
+		);
+		Book::create( //220
+			array(
+				'judul' => 'IBM PC COBOL',
+				'pengarang' => 'William J. Atkinson Jr.  Paul A. De Sanctis',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835930513',
+				'tahun' => '1985'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Managing  individual and group behaviuor in organizations',
+				'pengarang' => 'Daniel C. Feldman  Hugh J.Arnold',
+				'dcc_code' => '658.3',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070203865',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Overhead Express : User Guide',
+				'pengarang' => 'Business & Professional Software',
+				'dcc_code' => '005.133Leo Brodie',
+				'penerbit' => 'Business & Professional Software',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Disk operating system version 3.0',
+				'pengarang' => 'IBM',
+				'dcc_code' => '005.43',
+				'penerbit' => 'International Business Machines',
+				'edisi' => '1',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Thinking forth : a language and philosophy for solving problems',
+				'pengarang' => 'Leo Brodie',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0139175687',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Basic computer programs in science and engineering',
+				'pengarang' => 'Jules H. Gilder',
+				'dcc_code' => '620.028 5',
+				'penerbit' => 'Hayden Book Company',
+				'isbn' => '0810407612',
+				'tahun' => '1980'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'System analysis and project management',
+				'pengarang' => 'David I. Cleland  William R. King',
+				'dcc_code' => '658.403 2',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '3',
+				'isbn' => '0070113114',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Systems analysis and design : a structured approach',
+				'pengarang' => 'William S. Davis',
+				'dcc_code' => '004.21',
+				'penerbit' => 'Addison-Wesley',
+				'isbn' => '0201102714',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Office systems',
+				'pengarang' => 'Samuel Jay Kalow  Ercole Rosa',
+				'dcc_code' => '651.8',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0136331491',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Language arts computer book : how to guide for teachers',
+				'pengarang' => 'Wayne Dickson  Michael W. Raymond',
+				'dcc_code' => '428.402 85',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835939413',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( //230
+			array(
+				'judul' => 'Inside the IBM PC : access to advanced features and programming',
+				'pengarang' => 'Peter Norton',
+				'dcc_code' => '005.265',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0893035564',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Theory and problems of programming with structured cobol',
+				'pengarang' => 'Lawrence R. Newcomer',
+				'dcc_code' => '005.133',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '007037998X',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Managing behavior in organization : Text, cases, readings',
+				'pengarang' => 'Leonard A. Schlesinger  Robert G. Eccles  John J. Gabarro',
+				'dcc_code' => '658.001',
+				'penerbit' => 'McGraw Hill',
+				'isbn' => '0070553327',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'PC graphics charts, graphs, games and art on the IBM PC',
+				'pengarang' => 'Dick Conklin',
+				'dcc_code' => '006.676 5',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471892076',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Accounting the basis for business decisions',
+				'pengarang' => 'Walter B. Meigs  Robert F. Meigs',
+				'dcc_code' => '657',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '9',
+				'isbn' => '0070422532',
+				'tahun' => '1990'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Introduction to computers',
+				'pengarang' => 'Gordon B Davis',
+				'dcc_code' => '004',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '3',
+				'isbn' => '0070662460',
+				'tahun' => '1965'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Programming language : design and implementation',
+				'pengarang' => 'Terrence W. Pratt',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Prentice Hall',
+				'edisi' => '2',
+				'isbn' => '0876923945',
+				'tahun' => '1985'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Distributed processing and data communication',
+				'pengarang' => 'Daniel R. McGlynn',
+				'dcc_code' => '004.6',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471018864',
+				'tahun' => '1978'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'File techniques for data base organization in COBOL',
+				'pengarang' => 'LeRoy F. Johnson  Rodney H. Cooper',
+				'dcc_code' => '005.133',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0133140393',
+				'tahun' => '1981'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Spreadsheet software from VisiCalc to 1-2-3',
+				'pengarang' => 'LeRoy F. Johnson  Rodney H. Cooper',
+				'dcc_code' => '005.3',
+				'penerbit' => 'Que Corporation',
+				'isbn' => '088022035x',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( //240
+			array(
+				'judul' => 'RPG II and RPG III with business applications',
+				'pengarang' => 'Stanley E. Myers',
+				'dcc_code' => '005.133 [PRO]',
+				'penerbit' => 'Reston Publishing',
+				'isbn' => '0835967530',
+				'tahun' => '1982'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Computers today',
+				'pengarang' => 'Donald H. Sanders',
+				'dcc_code' => '004',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '2',
+				'isbn' => '0070547017',
+				'tahun' => '1985'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Advanced programming : a practical course',
+				'pengarang' => 'D.W. Barron  J.M. Bishop',
+				'dcc_code' => '621.39',
+				'penerbit' => 'John Wiley & Sons, Inc',
+				'isbn' => '0471903191',
+				'tahun' => '1984'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Applied statistics for business and economics',
+				'pengarang' => 'Henrick J. Malik  Kenneth Mullen',
+				'dcc_code' => '519.5',
+				'penerbit' => 'Addison-Wesley',
+				'isbn' => '0201044102',
+				'tahun' => '1975'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Microsoft Cobol : Reference manual',
+				'pengarang' => 'Microsoft',
+				'dcc_code' => '005.133 [COB]',
+				'penerbit' => 'Sine Nomine',
+				'tahun' => '1958'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'The C primer',
+				'pengarang' => 'Les Hancock  Morris Krieger',
+				'dcc_code' => '005.133 [CLA]',
+				'penerbit' => 'McGraw Hill',
+				'edisi' => '2',
+				'isbn' => '007025995X',
+				'tahun' => '1986'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Problem solving with the programmable calculator : puzzle, games & simulation with math & science application',
+				'pengarang' => 'David L. Dunlop  Thomas F. Sigmund',
+				'dcc_code' => '510.285',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0574213201',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Police-community relations',
+				'pengarang' => 'Edited by : Paul M. Whisenand   James L. Cline  George T. Felkenes',
+				'dcc_code' => '306.28',
+				'penerbit' => 'Goodyear Publishing Company',
+				'isbn' => '0876207042',
+				'tahun' => '1974'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Database processing : fundamentals, design, implementation',
+				'pengarang' => 'David M. Kroenke',
+				'dcc_code' => '005.74',
+				'penerbit' => 'Science Research Associates',
+				'edisi' => '2',
+				'isbn' => '0137213409',
+				'tahun' => '1983'
+			)
+		);
+		Book::create( 
+			array(
+				'judul' => 'Foundations of financial management',
+				'pengarang' => 'Stanley B. Block  Geoffrey A. Hirt',
+				'dcc_code' => '658.15',
+				'penerbit' => 'Irwin',
+				'edisi' => '4',
+				'isbn' => '0256036225',
+				'tahun' => '1997'
+			)
+		);
+		Book::create( //250
+			array(
+				'judul' => 'Introduction to the computer : an integrative approach',
+				'pengarang' => 'Jeffrey Frates  William Moldrup',
+				'dcc_code' => '004',
+				'penerbit' => 'Prentice Hall',
+				'isbn' => '0134803019',
+				'tahun' => '1980'
+			)
+		);
 	}
 } 	
