@@ -17,6 +17,7 @@ class CreateLibrariesTable extends Migration {
 			$table->engine="INNODB";
 			$table->increments('id');
 			$table->string('nama', 100);
+			$table->string('kota', 100); // untuk ongkoskirim.com
 			$table->string('alamat', 100);
 			$table->string('telepon', 25);
 			$table->string('email', 100);
