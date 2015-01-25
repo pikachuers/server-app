@@ -16,7 +16,7 @@ class CreateInterfeeTable extends Migration {
 		{
 			//Object ini bisa dibuat jikalau terjadi pemotongan duit dari lokal!
 			$table->increments('id');
-			$table->unsignedInteger('intertransaction_id');
+			$table->unsignedInteger('intertransaction_id')->nullable();
 			$table->unsignedInteger('perpusAsal');
 			$table->unsignedInteger('perpusTujuan');
 			$table->double('biaya');

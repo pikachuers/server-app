@@ -119,6 +119,37 @@ Route::get('/getbookinfo/{id}', function($id){
 	$b = Book::find($id);
 	return ($b)? $b : "false";
 });
+Route::get('library_list', function(){
+	$l = Library::all();
+	$a = array();
+	foreach($l as $v){
+		$a[] = [
+			'id' => $v->id,
+			'nama' => $v->nama
+		];
+	}
+});
+Route::post('topupuser', function(){
+	$rules = [
+		'perpuskey' => 'required',
+		'perpustujuan' => ''
+		'userid' => 'required',
+		'duit' => 'required|min:1000'
+	];
+	$v = Validator::make(Input::all(), $rules);
+	if($v->fails()){
+		return [
+			'status' => 'NG',
+			'message' => 'Ada kesalahan data'
+		];
+	} else {
+		$p = Library::secret(Input::get('perpuskey'))->first();
+		$l = $p->url . '/topuplokal' .'/'. . $userid . '/' . $duit
+		API::get($l);
+		$if = new Interfee;
+		$if->
+	}
+});
 
 /**
 	Request Server to Various API (if any)

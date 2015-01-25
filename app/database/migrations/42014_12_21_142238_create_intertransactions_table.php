@@ -22,14 +22,13 @@ class CreateIntertransactionsTable extends Migration {
 
 			$table->unsignedInteger('perpusa');
 			$table->unsignedInteger('perpusa_anggota_id');
-			$table->unsignedInteger('perpusa_staff_id')->nullable();
 
 			$table->unsignedInteger('perpusb');
-			$table->unsignedInteger('perpusb_staff_id')->nullable();
 			$table->unsignedInteger('perpusb_collection_id')->nullable(); 
 
 			$table->unsignedInteger('perpusc');
-			$table->unsignedInteger('perpusc_staff_id')->nullable();
+
+			$table->unsignedInteger('perpusd');
 
 			$table->unsignedInteger('status_id');
 			$table->text('note')->nullable();
