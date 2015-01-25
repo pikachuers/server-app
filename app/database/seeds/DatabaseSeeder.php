@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder {
 			'nama' => 'Perpustakaan BPAD Jakarta TimurTenggara',
 			'alamat' => 'Jalan Kenangan Indah',
 			'telepon' => '080988722819',
-			'kota' => 'Jakarta'
+			'kota' => '1',
 			'email' => 'a@a.com',
 			'url' => 'http://perpusa.isikuesionerku.net/public',
 			'secretCode' => 'uhsduifhsodfhhw87ye8a3123y',
