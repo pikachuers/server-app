@@ -39,7 +39,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Asia/Jakarta',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -122,7 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'
+		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+		'Teepluss\Api\ApiServiceProvider'
 	),
 
 	/*
@@ -190,6 +191,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
+		'API' => 'Teepluss\Api\Facades\API'
 	),
 
 );

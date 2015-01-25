@@ -1,0 +1,480 @@
+body{
+    color: #5d5d5d;
+    font-family: 'rockwellregular','Roboto Slab', serif;
+}
+p, td{
+    font-family:"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue", 'Open Sans', "BBAlpha Sans","S60 Sans",Arial,sans-serif;
+    color: ;
+    font-size: 12.5px;
+}
+.triangle{
+    z-index: 1000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.bg-footer{
+    background-color: #5d5d5d;
+    color: #e6e6e6;
+    /*border-top: 0px solid #e6e6e6;*/
+    height: 100px;
+    padding-top: 30px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+}
+/*.col-xs-6 img{
+    margin-top: 25px;
+}*/
+.col-xs-6 img:hover, .col-md-3 img:hover, .col-md-6 img:hover{
+    -webkit-filter: brightness(1.1);
+    -moz-filter: brightness(1.1);
+    -o-filter:  brightness(1.1);
+    -ms-filter:  brightness(1.1);
+}
+.col-md-3 img{
+    margin-top: 12px;
+    margin-bottom: 15px;
+}
+.btn:hover, .col-xs-6 img:hover, .col-md-3 img:hover, .nav > li > a:hover, .nav > li > a:focus{
+    -webkit-transition: .2s all ease-in-out 0s;   
+    -webkit-transition-delay: .2s; 
+    -moz-transition: .2s all ease-in-out 0s;   
+    -moz-transition-delay: .2s; 
+    -ms-transition: .2s all;   
+    -ms-transition-delay: .2s; 
+    -o-transition: .2s all ease-in-out 0s;   
+    -o-transition-delay: .2s; 
+    transition: .2s all ease-in-out 0s;
+    transition-delay: .2s;
+}
+.btn-primary{
+    background-color: #5d5d5d;
+    border-color: #5d5d5d;
+}
+.btn-primary:hover{
+    background-color: #e6e6e6;
+    color: #5d5d5d;
+    border-color: #e6e6e6;
+}
+.container{
+	min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
+}
+.container a h3{
+    text-decoration: none;
+    color: #5d5d5d;
+}
+.container a h3:hover{
+    color: #5d5d5d;
+}
+.container h4{
+    color: #999;
+}
+.form-horizontal .checkbox, .form-horizontal .radio {
+    margin-left: 20px;
+}
+.bs-example-tabs ul li a{
+    color: #999;
+}
+#btn-masuk-home, #btn-notif{
+    position: absolute;
+    top: 8px;
+}
+#btn-masuk-home{ 
+    right: 302px;
+}
+#btn-notif{
+    right: 374px;
+}
+.notifikasi{
+    position: absolute; 
+    top: 8px; 
+    right: 374px;
+}
+#konten{
+    margin-top: 150px;
+}
+
+/*search-box*/
+.parent-search{
+    position: relative;
+}
+.search-box{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #5d5d5d;
+    opacity: 0.95;
+    padding: 15px 0;
+    z-index: 10;
+    width: 280px;
+    height: 320px;
+
+    -webkit-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.3);
+}
+.search-box h2{
+    color: #fff;
+    text-align: center;
+    margin-top: 60px; 
+}
+.search-box input[type="text"]{
+    width: 210px;
+    margin-left: 35px; 
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.search-box select{
+    width: 160px;
+    margin-left: 35px;
+}
+.search-box button{
+    margin-right: 35px;
+    margin-top: -34px;
+}
+
+/*style menu-member (CEK LAGI)*/
+.table-responsive{
+    margin-bottom: 60px;
+}
+#search-biasa{
+    margin-top: -50px;
+    margin-right: -15px;
+}
+#input-search-biasa{
+    width: 145px;
+    margin-right: -1px;
+}
+#form-search-biasa{
+    padding: 6px 7px;
+}
+.parent-user-box{
+    position: relative;
+}
+/*.user-box{
+    position: absolute;
+    width: 280px;
+    height: 80px;
+    background-color: #5d5d5d;
+    color: #fff;
+    right: 0;
+}*/
+.user-box h5{
+    color: #fff;
+    text-align: center;
+    margin-top: 32px;
+}
+.informasi h4{
+    margin-bottom: 15px;
+}
+
+/*style advanced search - GA DIGUNAIN (CEK LAGI)*/
+/*#box-advanced-search{
+    border: 1px solid #ccc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 15px 20px;
+    width: 500px;
+    height: 415px;
+    background-color: #fff;
+    margin-top:170px;
+    margin-bottom: 50px;
+}*/
+/*style modal advanced search*/
+#input-adv-search{
+    margin-top: 5px;
+}
+#seleksi{
+    margin-left: -15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+/*.aksen img{
+    position: relative;
+    margin-top: -200px;
+    z-index: -1;
+}*/
+
+/*style menu member*/
+#infouser div{
+	background-color: #5d5d5d;              
+	color: #fff;
+	text-align: center;
+	height: 80px;
+	padding-top: 22px;
+}
+
+/*
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu>a:after{
+    display: block;
+    content: " ";
+    float: right;
+    margin-right: 100px;
+}
+#menu-dua, #menu-tiga{
+    margin-left: 165px;
+    margin-top: -32px;
+}        
+*/
+
+#sub-satu{
+    width: 167px;
+}
+#multi-dropdown a:hover{
+    color: #000;
+    background-color: #e6e6e6;
+    margin-right: -1.5px;
+}
+
+/*style modal resensi*/
+.histori-resensi{
+	margin-top: 30px;
+}
+
+.histori-resensi .well{
+	height: 210px;
+	overflow-y: scroll;
+}
+/*style notifikasi*/
+#dropdown-notif{
+    margin: 2px -87px 0;
+}
+
+/*HeadRoom - js hide fixed navbar, show when need*/
+.headroom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all .2s ease-in-out;
+}
+.headroom--unpinned {
+    top: -130px;
+}
+.headroom--pinned {
+    top: 0;
+}
+/*End HeadRoom*/
+
+/*style hasil cari*/
+#paging{
+    margin-top: 40px;
+}
+
+/*style koleksi buku*/
+.scroll-top{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:none;
+    cursor: context-menu;
+    z-index: 99999999;
+}
+
+section{
+    margin-top: 40px;
+}
+.abu-abu{
+    color: #5d5d5d;
+}
+a{
+    color: #5bc0de;
+}
+.lihat-detil-buku{
+    font-weight: bold;
+}
+/*responsive media*/
+@media(max-width: 1200px){
+    .search-box{
+        top: 50px;
+    }
+    #btn-masuk-home{
+        right: 0;
+    }
+
+    /*style peminjaman*/
+    #search-biasa{
+        margin-right: 50px;
+    }
+    #input-search-biasa{ 
+        width: 95px;
+    }
+    .user-box{
+        margin-right: -15px;
+    }
+
+    /*style notifikasi*/
+    .notifikasi{
+        right: 320px;
+    }
+
+    /*style advanced search
+    .aksen img{
+    position: relative;
+    margin-top: -160px;
+    z-index: -1;
+	}*/
+}
+@media(max-width: 995px){
+    /*style peminjaman*/
+    #btn-cari-home{
+        position: absolute;
+        top: 8px;
+        right: 80px;
+    }
+	#konten{
+		margin-top: 150px;
+	}
+    .notifikasi{
+        right: 130px;
+    }
+}
+@media(max-width: 765px){
+    .search-box{
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        top: 0;
+    }
+    .search-box h2{
+        float: left;
+        margin: 0 10px 5px 10px;
+    }
+    .search-box input[type="text"], .search-box button, .search-box select {
+        float: left;
+        margin: 0 10px 5px 0px;
+    }
+    .col-sm-4{
+        margin-top: 30px;
+    }
+    #btn-cari-home{
+        position: absolute;
+        top: 8px;
+        right: px;
+    }
+    #btn-cari-home{
+        margin-right: -15px;
+    }
+    .notifikasi{
+        margin-right: -19px;
+    }
+
+    /*style modal advanced search*/
+    #seleksi{
+        margin-left: 5px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /*#box-advanced-search{
+        height: 465px;
+    }
+    .aksen img{
+        position: relative;
+        margin-top: -100px;
+        z-index: -1;
+    }*/
+	
+	/*style menu member*/
+	#infouser.col-sm-4 {
+		margin-top: 0;
+	}
+}
+@media(max-width: 578px){
+    /*style index.html search-box*/
+    .search-box h2{
+        width: 20%;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+    .search-box input[type="text"]{
+        width: 80%;
+        margin-right: 0;
+    }
+    .search-box select{
+        width: 80%;
+        margin-right: 2%;
+    }
+    .search-box button{
+        width: 18%;
+        margin-right: 0;
+    }
+    .col-sm-4{
+        margin-top: 30px;
+    }
+    /*style navbar-brand*/
+    #judul{
+        display: block;
+        width: 148px;
+        margin-top: -17px;
+    }
+    /*style page header buku.html*/
+    .page-header small{
+        display: block;
+        margin-top: 5px;
+    }
+    
+    /* style advancedsearch.html
+    #box-advanced-search{
+        width: 400px;
+    }
+    .aksen img{
+        position: relative;
+        margin-top: -80px;
+        z-index: -1;
+    }*/
+
+    #imgkecil{
+        margin-top: 25px;
+    }
+
+    /*style hasil cari*/
+    #paging{
+        margin-top: 50px;
+    }
+}
+@media(max-width: 450px){
+    /*style advancedsearch.html
+    #box-advanced-search{
+        width: 250px;
+    }
+    .aksen img{
+        position: relative;
+        margin-top: -50px;
+        z-index: -1;
+    }*/
+
+    #img-bk-resensi{
+        margin-top: 12px;
+    }
+}
+@media(max-width: 400px){
+    #img-bk-resensi{
+        margin-top: 22px;
+    }
+}
+
+
+/*
+    Untuk margin-bottom antar div
+*/
+.margin-bottom-05 { margin-bottom: 0.5em; }
+.margin-bottom-10 { margin-bottom: 1.0em; }
+.margin-bottom-15 { margin-bottom: 1.5em; }
+.margin-bottom-20 { margin-bottom: 2.0em; }
+.margin-bottom-25 { margin-bottom: 2.5em; }
+.margin-bottom-30 { margin-bottom: 3.0em; }

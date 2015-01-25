@@ -20,8 +20,5 @@ return array(
 		),
 
 	),
-
-	'migrations' => 'migrations',
-
-
+	'migrations' => 'migrations'
 );

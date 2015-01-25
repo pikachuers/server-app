@@ -16,11 +16,15 @@ class DatabaseSeeder extends Seeder {
 			'nama' => 'Perpustakaan BPAD Jakarta TimurTenggara',
 			'alamat' => 'Jalan Kenangan Indah',
 			'telepon' => '080988722819',
+			'kota' => 'Jakarta'
 			'email' => 'a@a.com',
 			'url' => 'http://perpusa.isikuesionerku.net/public',
 			'secretCode' => 'uhsduifhsodfhhw87ye8a3123y',
 		]);
-		// $this->call('UserTableSeeder');
+		User::create([
+			'nama' => 'Admin of all Admin',
+			'email' => 'admin@admin.com',
+			'password' => Hash::make('admin')
+		]);
 	}
-
 }

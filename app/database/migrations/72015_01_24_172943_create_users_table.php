@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLibrariesTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,18 +12,13 @@ class CreateLibrariesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('libraries', function(Blueprint $table)
+		Schema::create('users', function(Blueprint $table)
 		{
-			$table->engine="INNODB";
 			$table->increments('id');
 			$table->string('nama', 100);
-			$table->unsignedInt('kota'); // untuk ongkoskirim.com
-			$table->string('alamat', 100);
-			$table->string('telepon', 25);
 			$table->string('email', 100);
-			$table->string('url', 100);
-			$table->string('secretCode', 100); 
-
+			$table->string('password', 255);
+			$table->string('remember_token', 300);
 			$table->timestamps();
 		});
 	}
@@ -35,7 +30,7 @@ class CreateLibrariesTable extends Migration {
 	 */
 	public function down()
 	{
-
+		Schema::drop('users');
 	}
 
 }

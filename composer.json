@@ -6,7 +6,9 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"barryvdh/laravel-ide-helper": "~1.11"
+		"barryvdh/laravel-ide-helper": "~1.11",
+
+		"teepluss/api": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

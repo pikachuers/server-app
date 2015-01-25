@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'rockwellregular';
+    src: url('../fonts/rockwell-webfont.eot');
+    src: url('../fonts/rockwell-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/rockwell-webfont.woff2') format('woff2'),
+         url('../fonts/rockwell-webfont.woff') format('woff'),
+         url('../fonts/rockwell-webfont.ttf') format('truetype'),
+         url('../fonts/rockwell-webfont.svg#rockwellregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
