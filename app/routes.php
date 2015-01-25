@@ -132,7 +132,7 @@ Route::get('library_list', function(){
 Route::post('topupuser', function(){
 	$rules = [
 		'perpuskey' => 'required',
-		'perpustujuan' => ''
+		'perpustujuan' => '',
 		'userid' => 'required',
 		'duit' => 'required|min:1000'
 	];
