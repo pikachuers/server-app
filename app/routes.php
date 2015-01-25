@@ -144,7 +144,7 @@ Route::post('topupuser', function(){
 		];
 	} else {
 		$p = Library::secret(Input::get('perpuskey'))->first();
-		$l = $p->url . '/topuplokal' .'/'. $userid . '/' . $duit
+		$l = $p->url . '/topuplokal' .'/'. $userid . '/' . $duit;
 		API::get($l);
 		$if = new Interfee;
 		$if->
