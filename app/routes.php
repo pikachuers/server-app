@@ -2,6 +2,9 @@
 
 /**
 View Area
+
+
+
 **/
 Route::get('template', function(){
 	return  View::make('template');
@@ -34,6 +37,9 @@ Route::post('login', function(){
 	}
 });
 
+/**
+Perpustakaan
+ **/
 Route::group(['prefix' => 'perpustakaan'], function(){
 	Route::get('/', function(){
 		$p = Library::all();
@@ -82,12 +88,11 @@ Route::group(['prefix' => 'perpustakaan'], function(){
 });
 
 
-/**
-	Handle bagian CUD 3 master data
-**/
-
 /** 
 	Request from libraries to Server Area
+
+
+
 **/
 Route::post('library/validate', function(){
 	$perpuskey = Input::get('perpuskey');
@@ -132,7 +137,7 @@ Route::get('library_list', function(){
 Route::post('topupuser', function(){
 	$rules = [
 		'perpuskey' => 'required',
-		'perpustujuan' => '',
+		'perpustujuan' => 'required|numeric',
 		'userid' => 'required',
 		'duit' => 'required|min:1000'
 	];
@@ -143,16 +148,33 @@ Route::post('topupuser', function(){
 			'message' => 'Ada kesalahan data'
 		];
 	} else {
-		$p = Library::secret(Input::get('perpuskey'))->first();
-		$l = $p->url . '/topuplokal' .'/'. $userid . '/' . $duit;
+		$d = new \DateTime;
+		$p_asal = Library::secret(Input::get('perpuskey'))->first();
+		$p_tujuan = Library::find(Input::get('perpustujuan'));
+		$l = $p_tujuan->url . '/topuplokal' .'/'. $userid . '/' . $duit;
 		API::get($l);
 		$if = new Interfee;
-		//$if->
+		$if->perpus_asal = $p_asal->id;
+		$if->perpus_tujuan = $p_tujuan->id;
+		$if->berita = "Top up Saldo e-wallet";
+		$if->biaya = Input::get('duit');
+		$if->waktu = $d;
+		$if->save();
+
+		return [
+			'status' => 'OK',
+			'message' => 'Saldo sebesar '.Input::get('duit').' sudah di Top Up'
+		];
 	}
 });
 
+Route::get('getbookcount', function(){
+	return Book::all()->count();
+});
 /**
 	Request Server to Various API (if any)
+
+
 **/
 Route::get('province_list', function(){
 	//API

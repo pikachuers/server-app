@@ -30,7 +30,7 @@ class CreateIntertransactionsTable extends Migration {
 
 			$table->unsignedInteger('perpusd');
 
-			$table->unsignedInteger('status_id');
+			$table->unsignedInteger('status_id')->nullable();
 			$table->text('note')->nullable();
 
 			$table->date('tanggal_peminjaman')->nullable();

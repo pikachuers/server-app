@@ -11,7 +11,7 @@ class SearchController extends Controller{
 		foreach ($b as $c){
 			$arr[]= [
 				'id' => $c->id,
-				'name' => $c->judul . " - " . $c->pengarang . " - " . $c->isbn . " (Tahun: ".$c->tahun.")" 
+				'name' => $c->judul . " - " . $c->pengarang . " - " . $c->isbn . " (Tahun: ".$c->tahun.", Edisi: ". $c->edisi .")" 
 			];
 		}
 		return $arr;

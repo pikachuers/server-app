@@ -14,22 +14,25 @@ class CreateInterfeeTable extends Migration {
 	{
 		Schema::create('interfee', function(Blueprint $table)
 		{
+			$table->engine = 'INNODB';
+
 			//Object ini bisa dibuat jikalau terjadi pemotongan duit dari lokal!
+			//
 			$table->increments('id');
 			$table->unsignedInteger('intertransaction_id')->nullable();
-			$table->unsignedInteger('perpusAsal');
-			$table->unsignedInteger('perpusTujuan');
+			$table->unsignedInteger('perpus_asal');
+			$table->unsignedInteger('perpus_tujuan');
 			$table->double('biaya');
 			$table->text('berita'); //Computer Generated plis.
 			$table->dateTime('waktu');
-			$table->unsignedInteger('step');
+			$table->unsignedInteger('step')->nullable();
 			$table->timestamps();
 		});
 		Schema::table('interfee', function(Blueprint $table)
 		{
 			$table->foreign('intertransaction_id')->references('id')->on('intertransactions');
-			$table->foreign('perpusAsal')->references('id')->on('libraries');
-			$table->foreign('perpusTujuan')->references('id')->on('libraries');
+			$table->foreign('perpus_asal')->references('id')->on('libraries');
+			$table->foreign('perpus_tujuan')->references('id')->on('libraries');
 		});
 	}
 

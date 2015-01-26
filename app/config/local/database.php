@@ -26,8 +26,8 @@ return array(
 	|
 	*/
 
-	'default' => 'sqlsrv',
-	//'default' => 'mysql',
+	//'default' => 'sqlsrv',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------

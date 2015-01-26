@@ -14,6 +14,8 @@ class CreateCollectionsTable extends Migration {
 	{
 		Schema::create('collections', function(Blueprint $table)
 		{
+			$table->engine = 'INNODB';
+
 			$table->increments('id');
 			$table->unsignedInteger('library_id');
 			$table->unsignedInteger('book_id');
