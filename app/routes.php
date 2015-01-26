@@ -167,7 +167,12 @@ Route::post('topupuser', function(){
 		];
 	}
 });
-
+Route::get('perpusbookcounts/{bookid}', function($bookid){
+	$c = DB::table('collections')
+			->join('libraries', 'collections.library_id', '=', 'libraries.id')
+			->get(['libraries.nama', 'libraries.url' ,'collections.book_count']);
+	return $c;
+});
 Route::get('getbookcount', function(){
 	return Book::all()->count();
 });
