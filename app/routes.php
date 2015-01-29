@@ -124,7 +124,7 @@ Route::get('/getbookinfo/{id}', function($id){
 	$b = Book::find($id);
 	return ($b)? $b : "false";
 });
-Route::get('library_list', function(){
+Route::get('librarylist', function(){
 	$l = Library::all();
 	$a = array();
 	foreach($l as $v){
@@ -134,6 +134,13 @@ Route::get('library_list', function(){
 		];
 	}
 });
+Route::get('emailonlibrary', function(){
+	$email = Input::get('email');
+	$perpusid = Input::get('perpusid');
+	$p = Library::find($perpusid);
+	return API::get($p->url ."/user/$email"); 
+});
+
 Route::post('topupuser', function(){
 	$rules = [
 		'perpuskey' => 'required',
