@@ -332,8 +332,10 @@ Route::get('interlib_transactions', function(){
 							->orWhere('perpusb', '=', $p_req->id)
 							->orWhere('perpusc', '=', $p_req->id)
 							->orWhere('perpusd', '=', $p_req->id)
-							->orderBy('active', 'desc');
-							->orderBy('currentstep', 'asc');
+							->orderBy('active', 'desc')
+							->orderBy('currentstep', 'asc')->get();
+	
+	return $its;
 
 });
 
