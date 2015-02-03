@@ -50,7 +50,7 @@ Route::group(['prefix' => 'perpustakaan'], function(){
 
 		$rules = [
 			'namaperpus' => 'required|min:5',
-			'idpropinsi' => 'required|numeric',
+			'idkota' => 'required|numeric',
 			'alamat' => 'required|min:10',
 			'telepon' => 'required',
 			'email' =>'email|required',
@@ -72,7 +72,7 @@ Route::group(['prefix' => 'perpustakaan'], function(){
 		} else {
 			$x = new Library;
 			$x->nama = Input::get('namaperpus');
-			$x->kota = Input::get('idpropinsi');
+			$x->kota = Input::get('idkota');
 			$x->alamat = Input::get('alamat');
 			$x->telepon = Input::get('telepon');
 			$x->email = Input::get('email');
@@ -130,9 +130,10 @@ Route::get('librarylist', function(){
 	foreach($l as $v){
 		$a[] = [
 			'id' => $v->id,
-			'nama' => $v->nama
+			'name' => $v->nama
 		];
 	}
+	return $a;
 });
 Route::get('emailonlibrary', function(){
 	$email = Input::get('email');
@@ -178,12 +179,14 @@ Route::get('perpusbookcounts/{bookid}', function($bookid){
 	$c = DB::table('collections')
 			->join('libraries', 'collections.library_id', '=', 'libraries.id')
 			->where('book_id', '=', $bookid)
-			->get(['libraries.nama', 'libraries.url' ,'collections.book_count']);
+			->get(['libraries.id','libraries.nama', 'libraries.url' ,'collections.book_count']);
 	return $c;
 });
 Route::get('getbookcount', function(){
 	return Book::all()->count();
 });
+
+
 /**
 	Request Server to Various API (if any)
 
@@ -209,3 +212,143 @@ Route::get('city_list/{id}', function($id){
 	}
 	return $a;
 });
+
+/**
+Add Book MODULE!!! IMPORTANT
+**/
+
+Route::post('processAddRequest', function(){
+	$pengarang = Input::get('pengarang');
+	$judul = Input::get('judul');
+	$ddc_code = Input::get('ddc_code');
+	$penerbit = Input::get('penerbit');
+	$edisi =  Input::get('edisi');
+	$tahun = Input::get('tahun');
+	$isbn = Input::get('isbn');
+	$book_image_name = "placeholder.jpg";
+	
+	if(Input::get('img') != ''){
+		$path = 'uploads/';
+		$name = microtime(true);
+		$img2 = Image::make(Input::get('img'));
+		$img2->save($path.$name.'.jpg');
+		$book_image_name = $name.'.jpg';
+	}
+
+	$book = new Book;
+	$book->pengarang = $pengarang;
+	$book->judul = $judul;
+	$book->ddc_code = $ddc_code;
+	$book->penerbit = $penerbit;
+	$book->edisi = $edisi;
+	$book->tahun = $tahun;
+	$book->isbn = $isbn;    		
+	$book->book_image_name = $book_image_name;
+	$book->save();
+	return "OK";
+});
+
+/**
+ * End
+ */
+
+
+/**
+ Pesanan
+ */
+Route::post('createpemesanan', function(){	
+	try {
+
+		$perpusBid = Input::get('perpusBid');
+		$perpusCid = Input::get('perpusCid');
+		$bookid = Input::get('bookid');
+		$anggotaid = Input::get('anggotaid');
+		$perpusAkey = Input::get('perpusAkey');
+
+		$pA = Library::secret($perpusAkey)->first();
+		$pB = Library::find($perpusBid);
+		$pC = Library::find($perpusCid);
+
+		$a = Intertransaction::where('perpusa', '=', $pA->id)
+								->where('perpusa_anggota_id', $anggotaid)
+								->where('active', '=', true)
+								->get();
+		$a = $a->count();
+		if($a > 0){
+			return [
+				'status' => 'NG',
+				'message' => 'Anda masih punya peminjaman interlib yang aktif'
+			];
+		} else {
+			$i = new Intertransaction;
+			$i->perpusa = $pA->id;
+			$i->perpusa_anggota_id = $anggotaid;
+			$i->perpusb = $perpusBid;
+			$i->perpusc = $perpusCid;
+
+			
+			$ongkoses = API::post('http://rajaongkir.com/api/cost',[
+				'key' => '4f5e1315e648d5137c5eb74efed01b71',
+				'origin' => $pB->kota,
+				'destination' => $pC->kota,
+				'weight' => 1,
+				'courier' => 'jne' 
+			]);
+			$ongkos = $ongkoses['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'];
+			$hasil = API::get($pA->url."/kuranginlokal/$anggotaid/".$ongkos);
+			if($hasil == 'false'){
+				return [
+					'status' => 'NG',
+					'message' => 'Saldo tidak cukup. Minimal Rp.' . $ongkos
+				];
+			}
+
+			$us = API::get($pA->url ."/userforserver/".$anggotaid);
+			$ub = API::get($pB->url ."/bookforserver/".$bookid);
+
+			$arrcon = [$us, $ub, 'deposit'=>$ongkos];
+
+
+			$i->save();
+			$s = new Step;
+			$s->step = 0;
+			$s->content = json_encode($arrcon);
+			$s->accepted = false;
+			$s->intertransaction_id = $i->id;
+			$s->save();
+			return [
+				'status' => 'OK',
+				'message' => 'Pemesanan akan segera diproses'
+			];
+		} 
+	} catch (Exception $e) { return $e->getMessage(); }
+});
+
+
+Route::get('interlib_transactions', function(){
+	$pk = Input::get('perpusKey');
+	$p_req = Library::secret($pk)->first();
+	$its = Intertransaction::where('perpusa', '=', $p_req->id)
+							->orWhere('perpusb', '=', $p_req->id)
+							->orWhere('perpusc', '=', $p_req->id)
+							->orWhere('perpusd', '=', $p_req->id)
+							->orderBy('active', 'desc');
+							->orderBy('currentstep', 'asc');
+
+});
+
+// step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
+		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
+	//----	
+// step 1 pengiriman, wait for perpusB, isi resi dan send by perpusB (editable) | perpusB create transaction if acc & bikin interfee A->B sbyk deposit (step(0)->message, 
+		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
+// step 2 penerimaan, wait for perpusC
+	//-----
+// step 3 peminjaman, wait for perpusC, start intertransaction (kasi tanggal mulai, jatuh tempo)
+// step 4 pengembalian, init by perpusD, end intertransaction count denda with 1000 / hari, kasi tanggal pengmbalian
+	//count denda  + biaya pengiriman(D->B), jika tidak cukup segitu maka tidak bisa dikembalikan.
+	// create Interfee A->B sebesar denda
+	// deposit (step(4)->message) sebesar biaya pengiriman
+	//-----
+// step 5 pengiriman, wait for perpusB, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
+// step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive

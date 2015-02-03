@@ -18,7 +18,7 @@ class CreateBooksTable extends Migration {
 			$table->increments('id');
 			$table->string('judul', 100);
 			$table->string('pengarang', 100);
-			$table->string('dcc_code', 20);
+			$table->string('ddc_code', 20);
 			$table->string('penerbit', 100);
 			$table->string('edisi', 100)->nullable();
 			$table->string('tahun', 10);

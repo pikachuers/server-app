@@ -7,7 +7,7 @@
 	<h1 class="page-header">
 	    Perpustakaan
 	    <!--small>Secondary Text</small-->
-	    <button id="btn-tambah-buku" class="btn btn-primary pull-right visible-lg">Tambah Perpustakaan <span class="glyphicon glyphicon-plus"></span></button>
+	    <button id="btn-tambah-buku" class="btn btn-primary pull-right visible-sm visible-md visible-lg">Tambah Perpustakaan <span class="glyphicon glyphicon-plus"></span></button>
 	</h1>
 
 
@@ -138,7 +138,7 @@ function reapply(){
 		input2.change(function() {
 		    var current = input2.typeahead("getActive");
 		    if (current) {
-		        if (current.name == input.val()) {
+		        if (current.name == input2.val()) {
 		            $('#idkota').val(current.id);
 		        } else {
 		            $('#idkota').val('');
@@ -156,7 +156,7 @@ function reapply(){
         $.post('{{ URL::to("perpustakaan/create") }}', 
             {
                 'namaperpus': $('#namaperpus').val(),
-                'idpropinsi': $('#idpropinsi').val(),
+                'idkota': $('#idkota').val(),
                 'alamat': $('#alamat').val(),
                 'telepon': $('#telepon').val(),
                 'email': $('#email').val(),

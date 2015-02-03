@@ -56,7 +56,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'lib_server',
+			'database'  => 'servera',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
@@ -64,25 +64,6 @@ return array(
 			'prefix'    => '',
 		),
 
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'forge',
-			'username' => 'forge',
-			'password' => '',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		),
-
-		'sqlsrv' => array(
-			'driver'   => 'sqlsrv',
-			'host'     => 'DAILYRIG\SQLEXPRESS',
-			'database' => 'lib_server',
-			'username' => '',
-			'password' => '',
-			'prefix'   => '',
-		),
 
 	),
 

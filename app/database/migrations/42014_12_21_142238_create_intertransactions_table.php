@@ -26,11 +26,10 @@ class CreateIntertransactionsTable extends Migration {
 			$table->unsignedInteger('perpusb');
 			$table->unsignedInteger('perpusb_collection_id')->nullable(); 
 
-			$table->unsignedInteger('perpusc');
+			$table->unsignedInteger('perpusc')->nullable();
 
-			$table->unsignedInteger('perpusd');
+			$table->unsignedInteger('perpusd')->nullable();
 
-			$table->unsignedInteger('status_id')->nullable();
 			$table->text('note')->nullable();
 
 			$table->date('tanggal_peminjaman')->nullable();
@@ -42,6 +41,8 @@ class CreateIntertransactionsTable extends Migration {
 			$table->double('biaya')->nullable();
 			$table->double('denda')->nullable();
 
+			$table->unsignedInteger('currentstep')->default(0);
+			$table->boolean('active')->default(true);
 			$table->timestamps();
 		});
 
@@ -49,7 +50,6 @@ class CreateIntertransactionsTable extends Migration {
 			$table->foreign('perpusa')->references('id')->on('libraries');
 			$table->foreign('perpusb')->references('id')->on('libraries');
 			$table->foreign('perpusc')->references('id')->on('libraries');
-			$table->foreign('status_id')->references('id')->on('status');
 		});
 	}
 

@@ -22,7 +22,7 @@ class CreateLibrariesTable extends Migration {
 			$table->string('telepon', 25);
 			$table->string('email', 100);
 			$table->string('url', 100);
-			$table->string('secretCode', 100); 
+			$table->string('secretCode', 100);
 
 			$table->timestamps();
 		});

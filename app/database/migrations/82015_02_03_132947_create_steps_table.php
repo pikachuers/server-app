@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusTable extends Migration {
+class CreateStepsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,13 @@ class CreateStatusTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('status', function(Blueprint $table)
+		Schema::create('steps', function(Blueprint $table)
 		{
-			$table->engine = 'INNODB';
 			$table->increments('id');
-			$table->string('nama', 30); //nama status
+			$table->unsignedInteger('intertransaction_id');
+			$table->integer('step');
+			$table->text('content'); //json
+
 			$table->timestamps();
 		});
 	}
@@ -28,6 +30,7 @@ class CreateStatusTable extends Migration {
 	 */
 	public function down()
 	{
+		Schema::drop('steps');
 	}
 
 }

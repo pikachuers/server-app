@@ -123,7 +123,9 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-		'Teepluss\Api\ApiServiceProvider'
+		'Teepluss\Api\ApiServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+
 	),
 
 	/*
@@ -191,7 +193,9 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
-		'API' => 'Teepluss\Api\Facades\API'
+		'API' => 'Teepluss\Api\Facades\API',
+		'Image' => 'Intervention\Image\Facades\Image'
+
 	),
 
 );
