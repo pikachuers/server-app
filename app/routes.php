@@ -325,7 +325,7 @@ Route::post('createpemesanan', function(){
 });
 
 
-Route::get('interlib_transactions', function(){
+Route::post('interlib_transactions', function(){
 	$pk = Input::get('perpusKey');
 	$p_req = Library::secret($pk)->first();
 	$its = Intertransaction::where('perpusa', '=', $p_req->id)
@@ -334,9 +334,7 @@ Route::get('interlib_transactions', function(){
 							->orWhere('perpusd', '=', $p_req->id)
 							->orderBy('active', 'desc')
 							->orderBy('currentstep', 'asc')->get();
-	
 	return $its;
-
 });
 
 // step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
@@ -352,5 +350,5 @@ Route::get('interlib_transactions', function(){
 	// create Interfee A->B sebesar denda
 	// deposit (step(4)->message) sebesar biaya pengiriman
 	//-----
-// step 5 pengiriman, wait for perpusB, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
+// step 5 pengiriman, wait for perpusD, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
 // step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive
