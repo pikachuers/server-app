@@ -325,6 +325,7 @@ Route::post('createpemesanan', function(){
 			$i->perpusa_anggota_id = $anggotaid;
 			$i->perpusb = $perpusBid;
 			$i->perpusc = $perpusCid;
+			$i->perpusb_book_id = $bookid;
 
 			
 			$ongkoses = API::post('http://rajaongkir.com/api/cost',[
