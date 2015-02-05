@@ -353,7 +353,6 @@ Route::post('createpemesanan', function(){
 			$s = new Step;
 			$s->step = 0;
 			$s->content = json_encode($arrcon);
-			$s->accepted = false;
 			$s->intertransaction_id = $i->id;
 			$s->save();
 			return [
