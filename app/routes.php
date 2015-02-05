@@ -251,6 +251,46 @@ Route::post('processAddRequest', function(){
 /**
  * End
  */
+Route::post('exportconfig', function(){
+	try {
+	$id = Input::get('perpusid');
+	$dbhost = Input::get('dbhost');
+	$dbname = Input::get('dbname');
+	$dbuser = Input::get('dbuser');
+	$dbpass = Input::get('dbpass');
+	$sessionname = $dbname;
+
+	$l = Library::find($id);
+	$perpus_key = array ('perpustakaan.nama', 'perpustakaan.alamat', 'perpustakaan.notelp', 'perpustakaan.email','perpustakaan.server_url', 'perpustakaan.server_token');
+	$perpus_val = array(
+		$l->nama,
+		$l->alamat,
+		$l->telepon,
+		$l->email,
+		Request::root(),
+		$l->secretCode
+	);
+
+	$db_key = array('database.connections.mysql.host','database.connections.mysql.database','database.connections.mysql.username','database.connections.mysql.password');
+	$db_val = array($dbhost, $dbname, $dbuser, $dbpass);
+
+	$ses_key = 'session.cookie';
+	$ses_val = $dbname;
+	$arr =  [
+		[
+			$perpus_key, $perpus_val
+		],
+		[
+			$db_key, $db_val
+		],
+		[
+			$ses_key, $ses_val
+		]
+	];
+	return base64_encode(serialize($arr));
+} catch (Exception $e) { return $e->getMessage(); }
+});
+
 
 
 /**

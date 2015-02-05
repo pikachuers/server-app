@@ -34,7 +34,10 @@
 	        			<td>{{$p->telepon}}<br/>{{$p->email}}</td>
 	        			<td><a href="{{$p->url}}">Kunjungi</a></td>
 	        			<td>{{$p->secretCode}}</td>
-	        			<td><a href="#" class="btn btn-primary">Hapus</a></td>
+	        			<td>
+		        			<a href="#" class="btn btn-primary">Hapus</a>
+		        			<a href="#" data-perpusid="{{ $p->id }}" class="genconf btn btn-primary">Buat Config</a>
+		        		</td>
 	        		</tr>
 	        	@endforeach
 	        </tbody>
@@ -90,6 +93,44 @@
 	                <label class="control-label" for="confirmcari"></label>
 	                <div class="controls">
 	                    <input type="button" id="submitform" class="btn btn-default" value="Tambah Perpustakaan" />
+	                </div>
+	            </div>
+	        </fieldset>
+	    </form>
+	</div>
+	<div id='html_config' style="display:none">
+	    {{ Form::open() }}
+	        <fieldset>
+	        	<div class="control-group">
+	        	    <label for="inputKategori">Hostname</label>
+	        	    <div class="controls">
+	        	   	 <input type="hidden" name="perpusid" id="perpusid" class="form-control" />
+
+	        	        <input type="text" name="dbhost" id="dbhost" class="form-control" />
+	        	    </div>
+	        	</div>
+				<div class="control-group">
+				    <label for="inputKategori">DB Name</label>
+				    <div class="controls">
+				        <input type="text" name="dbname" id="dbname" class="form-control" />
+				    </div>
+				</div>
+				<div class="control-group">
+				    <label for="inputKategori">DB User</label>
+				    <div class="controls">
+				        <input type="text" name="dbuser" id="dbuser" class="form-control" />
+				    </div>
+				</div>
+				<div class="control-group">
+				    <label for="inputKategori">DB password</label>
+				    <div class="controls">
+				        <input type="text" name="dbpass" id="dbpass" class="form-control" />
+				    </div>
+				</div>
+	            <div class="control-group">
+	                <label class="control-label" for="confirmcari"></label>
+	                <div class="controls">
+	                    <input type="button" id="submitinfoconfig" class="btn btn-default" value="Generate Config" />
 	                </div>
 	            </div>
 	        </fieldset>
@@ -172,7 +213,21 @@ function reapply(){
             });   
     });
 }
+function reapply2(){
 
+    $('#submitinfoconfig').on('click', function(){
+    	console.log('a');
+    	$.post("{{ URL::to('exportconfig') }}", {
+    		'perpusid' : $('#perpusid').val(),
+    		'dbhost' : $('#dbhost').val(),
+    		'dbname' : $('#dbname').val(),
+    		'dbuser' : $('#dbuser').val(),
+    		'dbpass' : $('#dbpass').val()
+    	}) .done(function(data){
+    		alertify.alert('Generate Config', '<textarea style="height:100%" class="form-control">'+data+'</textarea>').set('resizable',true).resizeTo(600,500);
+    	});
+    });
+}
 $('#btn-tambah-buku').on('click', function(){
     $('.ajs-content').empty();
     var form = $('div#html_insert').html();
@@ -185,5 +240,18 @@ $('#btn-tambah-buku').on('click', function(){
     reapply();
 });
 
+$('.genconf').on('click', function(){
+
+	 $('.ajs-content').empty();
+	 var form = $('div#html_config').html();
+	 $('div#html_config').html('');
+	 alertify.alert( 'Tambah Perpustakaan', '', function(){
+	     var form = $('.ajs-content').html();
+	     $('div#html_config').html(form);
+	 }).set('resizable',true).resizeTo(600,500);
+	 $('.ajs-content').append($.parseHTML(form));
+	 $('#perpusid').val($(this).data('perpusid'));
+	 reapply2();
+});
 @append
 </script>

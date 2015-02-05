@@ -24,7 +24,14 @@ class Intertransaction extends Eloquent {
 		} else {
 			$x = $this->perpusb;
 		}
+		return $x;
 	}
+	public function toArray()
+    {
+        $array = parent::toArray();
+        $array['waiting'] = $this->waitingFor();
+        return $array;
+    }
 }
 // step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
 		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
@@ -41,3 +48,5 @@ class Intertransaction extends Eloquent {
 	//-----
 // step 5 pengiriman, wait for perpusD, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
 // step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive
+// step 7 peminjaman selesai
+// step 8 peminjaman dibatalkan
