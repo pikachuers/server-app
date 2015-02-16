@@ -127,13 +127,24 @@ Route::get('/getbookinfo/{id}', function($id){
 Route::get('librarylist', function(){
 	$l = Library::all();
 	$a = array();
-	foreach($l as $v){
-		$a[] = [
-			'id' => $v->id,
-			'name' => $v->nama
-		];
+	if(Input::get('simple', 'false') == 'true'){
+		foreach ($l as $v) {
+			$a[$v->id] = $v->nama;
+		}
+	} else {
+		foreach($l as $v){
+			$a[] = [
+				'id' => $v->id,
+				'name' => $v->nama
+			];
+		}
 	}
 	return $a;
+});
+Route::post('librarybykey', function(){
+	$perpuskey = Input::get('perpuskey');
+	$p = Library::secret($perpuskey)->first();
+	return $p->id;
 });
 Route::get('emailonlibrary', function(){
 	$email = Input::get('email');
@@ -364,6 +375,15 @@ Route::post('createpemesanan', function(){
 	} catch (Exception $e) { return $e->getMessage(); }
 });
 
+Route::get('interlib_locations/{id}', function($id){
+	$i = Intertransaction::find($id);
+	return [
+		"perpusa" => Library::find($i->perpusa)->location(),
+		"perpusb" => Library::find($i->perpusb)->location(),
+		"perpusc" => Library::find($i->perpusc)->location(),
+		"perpusd" => (Library::find($i->perpusd))? Library::find($i->perpusd)->location() : ""
+	];
+});
 
 Route::post('interlib_transactions', function(){
 	$pk = Input::get('perpusKey');
@@ -376,19 +396,87 @@ Route::post('interlib_transactions', function(){
 							->orderBy('currentstep', 'asc')->get();
 	return $its;
 });
+Route::get('interlib_transaction_details/{id}', function($id){
+	$i = Intertransaction::find($id);
+	return $i;
+});
+Route::get('interlib_transaction_step/{id}', function($id){
+	return Intertransaction::find($id)->steplist();
+});
+Route::get('interlib_transaction_step/{id}/{stepno}', function($id, $stepno){
+	$s = Step::inter($id)->step($stepno)->first();
+	if($s){
+		return $s->content;
+	} else {
+		return "";
+	}
+});
 
-// step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
+// P1 step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
 		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
 	//----	
-// step 1 pengiriman, wait for perpusB, isi resi dan send by perpusB (editable) | perpusB create transaction if acc & bikin interfee A->B sbyk deposit (step(0)->message, 
+// P2 step 1 pengiriman, wait for perpusB, isi resi dan send by perpusB (editable) | perpusB create transaction if acc & bikin interfee A->B sbyk deposit (step(0)->message, 
 		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
-// step 2 penerimaan, wait for perpusC
+// P2 step 2 penerimaan, wait for perpusC
 	//-----
-// step 3 peminjaman, wait for perpusC, start intertransaction (kasi tanggal mulai, jatuh tempo)
-// step 4 pengembalian, init by perpusD, end intertransaction count denda with 1000 / hari, kasi tanggal pengmbalian
+// P3 step 3 peminjaman, wait for perpusC, start intertransaction (kasi tanggal mulai, jatuh tempo)
+// P3 step 4 pengembalian, init by perpusD, end intertransaction count denda with 1000 / hari, kasi tanggal pengmbalian
 	//count denda  + biaya pengiriman(D->B), jika tidak cukup segitu maka tidak bisa dikembalikan.
 	// create Interfee A->B sebesar denda
 	// deposit (step(4)->message) sebesar biaya pengiriman
 	//-----
-// step 5 pengiriman, wait for perpusD, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
-// step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive
+// P4 step 5 pengiriman, wait for perpusD, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
+// P4 step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive
+Route::get('interlib_transactions_actions_reject_anggota', function(){
+	try {
+		$id = Input::get('id');
+		$tr = Intertransaction::find($id);
+		$tr->currentstep = 9;
+		$tr->active = 0;
+
+		$s = Step::inter($id)->step(0)->first();
+		$c = json_decode($s->content);
+		$deposit = $c->deposit;
+		$li = Library::find($tr->perpusa);
+
+		API::get($li->url."/topuplokal/$tr->perpusa_anggota_id/$deposit");
+		$tr->save();
+	} catch (Exception $e){
+		 return $e->getMessage(). " $id"; 
+	}
+	
+});
+Route::get('interlib_transactions_actions_reject_staff', function(){
+	$id = Input::get('id');
+	$tr = Intertransaction::find($id);
+	$tr->currentstep = 8;
+	$tr->active = 0;
+	$s = Step::inter($id)->step(0)->first();
+	$c = json_decode($s->content);
+	$deposit = $c['deposit'];
+	$li = Library::find('perpusa');
+
+	API::get($li->url."/topuplokal/$tr->perpusa_anggota_id/$deposit");
+	$tr->save();
+});
+Route::post('interlib_transactions_actions_accept_step0_staff', function(){
+	try {
+		$id = Input::get('id');
+		$perpusbkey = Input::get('perpuskey');
+		$i = Intertransaction::find($id);
+		if($i->currentstep == 0){
+			$l = Library::find($i->perpusb);
+			if($l->secretCode == $perpusbkey){
+				$i->currentstep = 1;
+				$i->save();
+				$s = new Step;
+				$s->intertransaction_id = $id;
+				$s->step=1;
+				$s->save();
+			}
+		}	
+	} catch (Exceptipon $e){
+		return $e->getMessage();
+	}
+	
+});

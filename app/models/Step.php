@@ -16,4 +16,10 @@ class Step extends Eloquent {
 	public function isEditable(){
 		return ($this->step == $this->intertransaction->currentstep);
 	}
+	public function scopeInter($query, $inter_id){
+		return $query->where('intertransaction_id', '=', $inter_id);
+	}
+	public function scopeStep($query, $s){
+		return $query->where('step', '=', $s);
+	}
 }

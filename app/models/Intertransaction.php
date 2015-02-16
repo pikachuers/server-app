@@ -6,6 +6,9 @@ class Intertransaction extends Eloquent {
 	public function steps(){
 		return $this->hasMany('Step');
 	}
+	public function steplist(){
+		return $this->steps()->lists('step');
+	}
 
 	public function scopeActive($query){
 		return $query->where("active", "=", true);
@@ -49,4 +52,4 @@ class Intertransaction extends Eloquent {
 // step 5 pengiriman, wait for perpusD, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
 // step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive
 // step 7 peminjaman selesai
-// step 8 peminjaman dibatalkan
+// step 8 peminjaman dibatalkan 
