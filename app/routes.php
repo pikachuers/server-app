@@ -478,5 +478,62 @@ Route::post('interlib_transactions_actions_accept_step0_staff', function(){
 	} catch (Exceptipon $e){
 		return $e->getMessage();
 	}
-	
+});
+Route::post('interlib_transactions_actions_insert_resi_step1_staff', function(){
+	$id = Input::get('id');
+	$perpusbkey =Input::get('perpuskey');
+	$resi = Input::get('resi');
+
+	$i = Intertransaction::find($id);
+	if($i->currentstep == 1){
+		$l = Library::find($i->perpusb);
+		if($l->secretCode == $perpusbkey){
+			$olst = Step::inter($id)->step(1)->first();
+			$olst->content = $resi;
+			$olst->save();
+
+			$i->currentstep = 2;
+			$i->save();
+
+			$s = new Step;
+			$s->intertransaction_id = $id;
+			$s->step=2;
+			$s->save();
+		}
+	}	
+});
+Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', function(){
+	$id = Input::get('id');
+	$perpusckey = Input::get('perpuskey');
+	$konfirmasi = Input::get('konfirmasi');
+	$i = Intertransaction::find($id);
+	if($i->currentstep == 2){
+		$l = Library::find($i->perpusc);
+		if($l->secretCode == $perpusckey){
+			$olst = Step::inter($id)->step(2)->first();
+			$olst->content = $konfirmasi;
+			$olst->save();
+
+			$i->currentstep = 3;
+			$i->save();
+
+			$s = new Step;
+			$s->intertransaction_id = $id;
+			$s->step=3;
+			$s->save();
+			//send email to member!
+		}
+	}
+});
+
+
+Route::get('sendmail', function(){
+	$data = [
+		'email' => 'pikachuers@gmail.com',
+		'nama' => 'Pikachuers',
+		'konten' => 'Buku pesanan telah sampai di Perpus C'
+	];
+	Mail::send('mailtemplate', $data, function($message) use ($data){
+	    $message->to($data['email'], Config::get('perpustakaan.namaserver'))->subject('Pemberitahuan Status Pemesanan');
+	});
 });
