@@ -2,7 +2,7 @@
 
 return array(
 	'driver' => 'smtp',
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.gmail.com',
 	'port' => 465,
 	'from' => array('address' => 'eliclib.email.notifier@gmail.com', 'name' => "Notifier ". Config::get('serverperpustakaan.namaserver')),
 	'encryption' => 'tls',
