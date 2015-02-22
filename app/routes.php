@@ -637,7 +637,6 @@ Route::post('interlib_transactions_actions_pengembalian_step4_staff', function()
 		if($us->kredit >= ($biayaantar + $denda)){
 			$tm = $biayaantar + $denda;
 			$hasil = API::get($pA->url."/kuranginlokal/$i->perpusa_anggota_id/$tm");
-			return $hasil;
 			if($hasil == "false"){
 				return [
 					"status" => 'NG',
@@ -654,6 +653,7 @@ Route::post('interlib_transactions_actions_pengembalian_step4_staff', function()
 				$interfee_denda->berita = "Denda Buku";
 				$interfee_denda->perpus_asal = $pA->id;
 				$interfee_denda->perpus_tujuan = $pA->id; //intended
+				$interfee_denda->save();
 
 
 				$step5 = new Step;
