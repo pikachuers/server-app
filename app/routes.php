@@ -412,21 +412,6 @@ Route::get('interlib_transaction_step/{id}/{stepno}', function($id, $stepno){
 	}
 });
 
-// P1 step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
-		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
-	//----	
-// P2 step 1 pengiriman, wait for perpusB, isi resi dan send by perpusB (editable) | perpusB create transaction if acc & bikin interfee A->B sbyk deposit (step(0)->message, 
-		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
-// P2 step 2 penerimaan, wait for perpusC
-	//-----
-// P3 step 3 peminjaman, wait for perpusC, start intertransaction (kasi tanggal mulai, jatuh tempo)
-// P3 step 4 pengembalian, init by perpusD, end intertransaction count denda with 1000 / hari, kasi tanggal pengmbalian
-	//count denda  + biaya pengiriman(D->B), jika tidak cukup segitu maka tidak bisa dikembalikan.
-	// create Interfee A->B sebesar denda
-	// deposit (step(4)->message) sebesar biaya pengiriman
-	//-----
-// P4 step 5 pengiriman, wait for perpusD, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
-// P4 step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive
 Route::get('interlib_transactions_actions_reject_anggota', function(){
 	try {
 		$id = Input::get('id');
@@ -480,17 +465,21 @@ Route::post('interlib_transactions_actions_accept_step0_staff', function(){
 	}
 });
 Route::post('interlib_transactions_actions_insert_resi_step1_staff', function(){
+	try {
 	$id = Input::get('id');
 	$perpusbkey =Input::get('perpuskey');
 	$resi = Input::get('resi');
+	$idkoleksi = Input::get('idkoleksi');
 
 	$i = Intertransaction::find($id);
 	if($i->currentstep == 1){
 		$l = Library::find($i->perpusb);
 		if($l->secretCode == $perpusbkey){
 			$olst = Step::inter($id)->step(1)->first();
-			$olst->content = $resi;
+			$olst->content = json_encode(["resi" => $resi, "idkoleksi" => $idkoleksi]);
 			$olst->save();
+
+			API::get($l->url . "/createintertransaction/".$idkoleksi ."/".$i->id);
 
 			$i->currentstep = 2;
 			$i->save();
@@ -499,10 +488,26 @@ Route::post('interlib_transactions_actions_insert_resi_step1_staff', function(){
 			$s->intertransaction_id = $id;
 			$s->step=2;
 			$s->save();
+
+			$if = new Interfee;
+			$if->stepdetail_id = $i->id; //intertransaction_id
+			$if->perpus_asal = $i->perpusa;
+			$if->perpus_tujuan = $i->perpusb;
+
+			$s2 = Step::inter($id)->step(0)->first();
+			$c2 = json_decode($s2->content);
+			$if->biaya = $c2->deposit;
+
+			$if->berita = "Biaya Pengiriman";
+			$if->waktu = new \DateTime;
+
+			$if->save();
 		}
-	}	
+	}			
+} catch (Exception $e) {$e->getMessage();}
 });
 Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', function(){
+	try {
 	$id = Input::get('id');
 	$perpusckey = Input::get('perpuskey');
 	$konfirmasi = Input::get('konfirmasi');
@@ -522,18 +527,168 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', f
 			$s->step=3;
 			$s->save();
 			//send email to member!
+			$s0 = Step::find($id);
+			$c0 = json_decode($s0->content);
+			$infouser = new SimpleArray($c0["0"]);
+			$infobuku = new SimpleArray($c0["1"]);
+			$data = [
+				'email' => $infouser->email,
+				'nama' => $infouser->nama,
+				'konten' => "Buku dengan judul $infobuku->judul, yang dipesan telah sampai di $l->nama (alamat: $l->alamat | telepon: $l->telepon) pada $konfirmasi"
+			];
+			Mail::send('mailtemplate', $data, function($message) use ($data){
+			    $message->to($data['email'], Config::get('perpustakaan.namaserver'))->subject('Pemberitahuan Status Pemesanan');
+			});
 		}
 	}
+} catch (Exception $e) { $e->getMessage(); }
+});
+Route::post('interlib_transactions_actions_mulai_peminjaman_step3_staff', function(){
+	try {
+		$id = Input::get('id');
+		$perpusckey = Input::get('perpuskey');
+		$i = Intertransaction::find($id);
+		if($i->currentstep == 3){
+			$l = Library::find($i->perpusc);
+			if($l->secretCode == $perpusckey){
+				$i->currentstep = 4;
+				$i->tanggal_peminjaman = Carbon::now()->toDateString();
+				$i->tanggal_jatuhtempo = Carbon::now()->addDays(7)->toDateString();
+				$i->save();
+				$s = new Step;
+				$s->intertransaction_id = $id;
+				$s->step=4;
+				$s->save();
+			}
+		}
+	} catch (Exception $e) { $e->getMessage(); }
 });
 
 
-Route::get('sendmail', function(){
-	$data = [
-		'email' => 'pikachuers@gmail.com',
-		'nama' => 'Pikachuers',
-		'konten' => 'Buku pesanan telah sampai di Perpus C'
-	];
-	Mail::send('mailtemplate', $data, function($message) use ($data){
-	    $message->to($data['email'], Config::get('perpustakaan.namaserver'))->subject('Pemberitahuan Status Pemesanan');
-	});
+Route::post('interlib_transactions_actions_pengembalian_check_step4_staff', function(){
+	try {
+		$id = Input::get('id');
+		$perpusdkey = Input::get('perpuskey');
+		$konfirmasi = Input::get('konfirmasi');
+
+		$i = Intertransaction::find($id);
+		
+			$now = Carbon::now();
+			$jatuhtempo = Carbon::createFromFormat('Y-m-d', $i->tanggal_jatuhtempo);
+			if($now->gt($jatuhtempo)){
+				$denda = 1000 * $jatuhtempo->diffInDays($now);
+			} else {
+				$denda = 0;
+			}
+	
+
+		$pD = Library::secret($perpusdkey)->first();
+		$pB = Library::find($i->perpusb);
+		$ongkoses = API::post('http://rajaongkir.com/api/cost',[
+			'key' => '4f5e1315e648d5137c5eb74efed01b71',
+			'origin' => $pD->kota,
+			'destination' => $pB->kota,
+			'weight' => 1,
+			'courier' => 'jne' 
+		]);
+		$biayaantar = $ongkoses['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'] or 0;
+		$pA = Library::find($i->perpusa);		
+		$us = API::get($pA->url ."/userforserver/".$i->perpusa_anggota_id);
+
+
+		return [
+			"denda" => $denda,
+			"biayaantar" => $biayaantar,
+			"user" => $us
+		];
+	} catch (Exception $e) { $e->getMessage(); }
 });
+
+Route::post('interlib_transactions_actions_pengembalian_step4_staff', function(){
+	try {
+		$id = Input::get('id');
+		$perpusdkey = Input::get('perpuskey');
+		$konfirmasi = Input::get('konfirmasi');
+
+		$i = Intertransaction::find($id);
+		
+			$now = Carbon::now();
+			$jatuhtempo = Carbon::createFromFormat('Y-m-d', $i->tanggal_jatuhtempo);
+			if($now->gt($jatuhtempo)){
+				$denda = 1000 * $jatuhtempo->diffInDays($now);
+			} else {
+				$denda = 0;
+			}
+	
+
+		$pD = Library::secret($perpusdkey)->first();
+		$pB = Library::find($i->perpusb);
+		$ongkoses = API::post('http://rajaongkir.com/api/cost',[
+			'key' => '4f5e1315e648d5137c5eb74efed01b71',
+			'origin' => $pD->kota,
+			'destination' => $pB->kota,
+			'weight' => 1,
+			'courier' => 'jne' 
+		]);
+		$biayaantar = $ongkoses['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'] or 0;
+		$pA = Library::find($i->perpusa);
+		$us = API::get($pA->url ."/userforserver/".$i->perpusa_anggota_id);
+		$us = new SimpleArray($us);
+		if($us->kredit >= ($biayaantar + $denda)){
+			$tm = $biayaantar + $denda;
+			$hasil = API::get($pA->url."/kuranginlokal/$i->perpusa_anggota_id/$tm");
+			return $hasil;
+			if($hasil == "false"){
+				return [
+					"status" => 'NG',
+					"message" => 'Saldo tidak cukup'
+				];
+			} else {
+				$step4 = Step::inter($id)->step(4)->first();
+				$step4->content = json_encode(["denda" => $denda, "biayaantar" => $biayaantar]);
+				$step4->save();
+
+				$interfee_denda = new Interfee;
+				$interfee_denda->stepdetail_id = $id;
+				$interfee_denda->biaya = $denda;
+				$interfee_denda->berita = "Denda Buku";
+				$interfee_denda->perpus_asal = $pA->id;
+				$interfee_denda->perpus_tujuan = $pA->id; //intended
+
+
+				$step5 = new Step;
+				$step5->intertransaction_id = $id;
+				$step5->step = 5;
+				$step5->save();
+
+				$i->perpusd = $pD->id;
+				$i->currentstep = 5;
+				$i->save();
+				return [
+					"status" => 'OK',
+					"message" => 'Transaksi Sukses'
+				];
+			}
+		} else {
+			return [
+				"status" => 'NG',
+				"message" => "Saldo tidak cukup"
+			];
+		}
+	} catch (Exception $e) { $e->getMessage(); }
+});
+// P1 step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
+		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
+	//----	
+// P2 step 1 pengiriman, wait for perpusB, isi resi dan send by perpusB (editable) | perpusB create transaction if acc & bikin interfee A->B sbyk deposit (step(0)->message, 
+		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
+// P2 step 2 penerimaan, wait for perpusC
+	//-----
+// P3 step 3 peminjaman, wait for perpusC, start intertransaction (kasi tanggal mulai, jatuh tempo)
+// P3 step 4 pengembalian, init by perpusD, end intertransaction count denda with 1000 / hari, kasi tanggal pengmbalian
+	//count denda  + biaya pengiriman(D->B), jika tidak cukup segitu maka tidak bisa dikembalikan.
+	// create Interfee A->A sebesar denda
+	// potong saldo user sebesar biaya pengiriman + denda
+	//-----
+// P4 step 5 pengiriman, wait for perpusD, isi resi dan send by perpusD (editable) | bikin interfee A->D sbyk deposit (step(4)->message)
+// P4 step 6 penerimaan, wait for perpusB, perpusB close transaction local, set interntransac as inactive

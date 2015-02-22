@@ -194,7 +194,8 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 
 		'API' => 'Teepluss\Api\Facades\API',
-		'Image' => 'Intervention\Image\Facades\Image'
+		'Image' => 'Intervention\Image\Facades\Image',
+		'Carbon' => 'Carbon\Carbon'
 
 	),
 

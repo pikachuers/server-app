@@ -9,7 +9,8 @@
 		"barryvdh/laravel-ide-helper": "~1.11",
 
 		"teepluss/api": "dev-master",
-		"intervention/image": "~2.1"
+		"intervention/image": "~2.1",
+		"nesbot/carbon": "~1.14"
 	},
 	"autoload": {
 		"classmap": [
