@@ -527,7 +527,7 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', f
 			$s->step=3;
 			$s->save();
 			//send email to member!
-			$s0 = Step::find($id);
+			$s0 = Step::inter($id)->step(0)->first();
 			$c0 = json_decode($s0->content);
 			$infouser = new SimpleArray($c0["0"]);
 			$infobuku = new SimpleArray($c0["1"]);
@@ -661,6 +661,7 @@ Route::post('interlib_transactions_actions_pengembalian_step4_staff', function()
 				$step5->step = 5;
 				$step5->save();
 
+				$i->tanggal_pengembalian = Carbon::now()->toDateString();
 				$i->perpusd = $pD->id;
 				$i->currentstep = 5;
 				$i->save();
@@ -676,6 +677,88 @@ Route::post('interlib_transactions_actions_pengembalian_step4_staff', function()
 			];
 		}
 	} catch (Exception $e) { $e->getMessage(); }
+});
+Route::post('interlib_transactions_actions_insert_resi_step5_staff', function(){
+	try {
+	$id = Input::get('id');
+	$perpusdkey =Input::get('perpuskey');
+	$resi = Input::get('resi');
+
+	$i = Intertransaction::find($id);
+	if($i->currentstep == 5){
+		$l = Library::find($i->perpusd);
+		if($l->secretCode == $perpusdkey){
+			$olst = Step::inter($id)->step(5)->first();
+			$olst->content = json_encode(["resi" => $resi]);
+			$olst->save();
+
+			//API::get($l->url . "/createintertransaction/".$idkoleksi ."/".$i->id);
+
+			$i->currentstep = 6;
+			$i->save();
+
+			$s = new Step;
+			$s->intertransaction_id = $id;
+			$s->step=6;
+			$s->save();
+
+			$if = new Interfee;
+			$if->stepdetail_id = $i->id; //intertransaction_id
+			$if->perpus_asal = $i->perpusa;
+			$if->perpus_tujuan = $i->perpusd;
+
+			$s2 = Step::inter($id)->step(4)->first();
+			$c2 = json_decode($s2->content);
+			$if->biaya = $c2->biayaantar;
+
+			$if->berita = "Biaya Pengiriman";
+			$if->waktu = new \DateTime;
+
+			$if->save();
+		}
+	}			
+} catch (Exception $e) {$e->getMessage();}
+});
+Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step6_staff', function(){
+	try {
+	$id = Input::get('id');
+	$perpusbkey = Input::get('perpuskey');
+	$konfirmasi = Input::get('konfirmasi');
+	$i = Intertransaction::find($id);
+	if($i->currentstep == 6){
+		$l = Library::find($i->perpusb);
+		if($l->secretCode == $perpusbkey){
+			$olst = Step::inter($id)->step(6)->first();
+			$olst->content = $konfirmasi;
+			$olst->save();
+
+			$i->currentstep = 7;
+			$i->active = false;
+			$i->save();
+
+			$s = new Step;
+			$s->intertransaction_id = $id;
+			$s->step=7;
+			$s->save();
+
+			$pB = Library::find($i->perpusb);
+
+			API::get($pB->url . "/closetransaction/" . $i->id);
+			// $s0 = Step::inter($id)->step(5)->first();
+			// $c0 = json_decode($s0->content);
+			// $infouser = new SimpleArray($c0["0"]);
+			// $infobuku = new SimpleArray($c0["1"]);
+			// $data = [
+			// 	'email' => $infouser->email,
+			// 	'nama' => $infouser->nama,
+			// 	'konten' => "Buku dengan judul $infobuku->judul, yang dipesan telah sampai di $l->nama (alamat: $l->alamat | telepon: $l->telepon) pada $konfirmasi"
+			// ];
+			// Mail::send('mailtemplate', $data, function($message) use ($data){
+			//     $message->to($data['email'], Config::get('perpustakaan.namaserver'))->subject('Pemberitahuan Status Pemesanan');
+			// });
+		}
+	}
+} catch (Exception $e) { $e->getMessage(); }
 });
 // P1 step 0 konfirmasi pemesanan orang, wait for perpusB, deposit kredit (anggota -- kredit)
 		//cancel by perpusB or Anggota (kalo cancel, balikin kredit)
