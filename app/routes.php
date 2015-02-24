@@ -193,10 +193,29 @@ Route::get('perpusbookcounts/{bookid}', function($bookid){
 			->get(['libraries.id','libraries.nama', 'libraries.url' ,'collections.book_count']);
 	return $c;
 });
+
+
 Route::get('getbookcount', function(){
 	return Book::all()->count();
 });
+Route::get('bookmaxid', function(){
+	return Book::max('id');
+});
+Route::get('getbooks/{lastbookid}', function($lastbookid){
+	set_time_limit(0);
 
+	$arr = array();
+	$lastbookidserver = Book::max('id');
+
+	++$lastbookid; 
+	for($x = intval($lastbookid); $x <= $lastbookidserver; $x++){
+		$b = Book::find($x);
+		if($b){
+			$arr[] = $b;
+		}
+	}
+	return base64_encode(json_encode($arr));
+});
 
 /**
 	Request Server to Various API (if any)
@@ -237,7 +256,6 @@ Route::post('processAddRequest', function(){
 	$tahun = Input::get('tahun');
 	$isbn = Input::get('isbn');
 	$book_image_name = "placeholder.jpg";
-	
 	if(Input::get('img') != ''){
 		$path = 'uploads/';
 		$name = microtime(true);
@@ -245,7 +263,6 @@ Route::post('processAddRequest', function(){
 		$img2->save($path.$name.'.jpg');
 		$book_image_name = $name.'.jpg';
 	}
-
 	$book = new Book;
 	$book->pengarang = $pengarang;
 	$book->judul = $judul;
