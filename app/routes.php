@@ -457,7 +457,7 @@ Route::get('interlib_transactions_actions_reject_staff', function(){
 	$s = Step::inter($id)->step(0)->first();
 	$c = json_decode($s->content);
 	$deposit = $c['deposit'];
-	$li = Library::find('perpusa');
+	$li = Library::find($tr->perpusa);
 
 	API::get($li->url."/topuplokal/$tr->perpusa_anggota_id/$deposit");
 	$tr->save();
