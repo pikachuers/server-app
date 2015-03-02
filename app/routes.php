@@ -201,6 +201,7 @@ Route::get('getbookcount', function(){
 Route::get('bookmaxid', function(){
 	return Book::max('id');
 });
+
 Route::get('getbooks/{lastbookid}', function($lastbookid){
 	set_time_limit(0);
 
