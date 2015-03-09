@@ -546,7 +546,7 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', f
 			$s->save();
 			//send email to member!
 			$s0 = Step::inter($id)->step(0)->first();
-			$c0 = json_decode($s0->content);
+			$c0 = json_decode($s0->content, TRUE);
 			$infouser = new SimpleArray($c0["0"]);
 			$infobuku = new SimpleArray($c0["1"]);
 			$data = [
