@@ -18,14 +18,16 @@ class Intertransaction extends Eloquent {
 	}
 	public function waitingFor(){
 		$x= 0;
-		if($this->currentstep == 0 && $this->currentstep == 1){
+		if($this->currentstep == 0 || $this->currentstep == 1){
 			$x = $this->perpusb;
-		} else if ($this->currentstep == 2 && $this->currentstep == 3){
+		} else if ($this->currentstep == 2 || $this->currentstep == 3){
 			$x = $this->perpusc;
-		} else if ($this->currentstep == 4 && $this->currentstep == 5){
-			$x = $this->perpusd;
-		} else {
-			$x = $this->perpusb;
+		} else if ($this->currentstep == 4 || $this->currentstep == 5){
+			if($this->perpusd == ""){
+				$x = $this->perpusc;
+			} else {
+				$x = $this->perpusd;
+			}
 		}
 		return $x;
 	}

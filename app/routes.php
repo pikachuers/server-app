@@ -94,6 +94,29 @@ Route::group(['prefix' => 'perpustakaan'], function(){
 
 
 **/
+
+Route::post('activetransactionbyemail', function(){
+	$pA = Library::find(Input::get('perpusAid'));
+	if(!$pA){
+		$pA = Library::secret(Input::get('perpusAid'))->first();
+	}
+	$email_anggota = Input::get('email_anggota');
+	$id_email_anggota = API::get($pA->url . "/user" . "/" . $email_anggota ."/id");
+	if($id_email_anggota == ""){
+		$id_email_anggota = 0;
+	}
+
+	$t = Intertransaction::where('active', '=', '1')
+					->where('perpusa', '=', $perpusAid)
+					->where('perpusa_anggota_id', '=', $id_email_anggota)
+					->first();
+	if($t){
+		return $t->id;
+	} else {
+		return 0;
+	}
+});
+
 Route::post('library/validate', function(){
 	$perpuskey = Input::get('perpuskey');
 	$p = Library::secret($perpuskey)->first();
