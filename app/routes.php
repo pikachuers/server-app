@@ -96,12 +96,14 @@ Route::group(['prefix' => 'perpustakaan'], function(){
 **/
 
 Route::post('activetransactionbyemail', function(){
+	try {
+	$perpusAid = Input::get('perpusAid');
 	$pA = Library::find(Input::get('perpusAid'));
 	if(!$pA){
 		$pA = Library::secret(Input::get('perpusAid'))->first();
 	}
 	$email_anggota = Input::get('email_anggota');
-	$id_email_anggota = API::get($pA->url . "/user" . "/" . $email_anggota ."/id");
+	$id_email_anggota = API::get($pA->url . "/user/id" . "/" . $email_anggota);
 	if($id_email_anggota == ""){
 		$id_email_anggota = 0;
 	}
@@ -115,6 +117,7 @@ Route::post('activetransactionbyemail', function(){
 	} else {
 		return 0;
 	}
+	} catch (Exception $e){ return $e->getMessage();}
 });
 
 Route::post('library/validate', function(){
