@@ -604,6 +604,7 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', f
 				       ],
 				]
 			]);
+			return "a";
 		}
 	}
 } catch (Exception $e) { $e->getMessage(); }
@@ -808,7 +809,7 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step6_staff', f
 
 			$pB = Library::find($i->perpusb);
 
-			API::get($pB->url . "/closetransaction/" . $i->id);
+			API::get($pB->url . "/closeintertransaction/" . $i->id);
 			// $s0 = Step::inter($id)->step(5)->first();
 			// $c0 = json_decode($s0->content);
 			// $infouser = new SimpleArray($c0["0"]);
