@@ -595,12 +595,12 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', f
 				       "subject" => "Pemberitahuan Status Pemesanan",
 				       "from_email" => "eliclib.email.notifier@gmail.com",
 				       "from_name" => Config::get('serverperpustakaan.namaserver'),
-				       "to": [
-				           {
+				       "to" => [
+				       		[
 				               "email" => $data['email'],
 				               "name" => $data['nama'],
 				               "type" => "to"
-				           }
+				            ]
 				       ],
 				]
 			]);
