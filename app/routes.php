@@ -580,9 +580,30 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', f
 				'nama' => $infouser->nama,
 				'konten' => "Buku dengan judul $infobuku->judul, yang dipesan telah sampai di $l->nama (alamat: $l->alamat | telepon: $l->telepon) pada $konfirmasi"
 			];
-			Mail::send('mailtemplate', $data, function($message) use ($data){
+			$view22 = View::make('mailtemplate')
+						->with('nama', $data['nama']) 
+						->with('email', $data['email'])
+						->with('konten', $data['konten']);
+			/*Mail::send('mailtemplate', $data, function($message) use ($data){
 			    $message->to($data['email'], Config::get('perpustakaan.namaserver'))->subject('Pemberitahuan Status Pemesanan');
 			});
+			*/
+			API::post('https://mandrillapp.com/api/1.0/messages/send.json', [
+				"key" => "oWnI-LxjlJJp5d1bTl74AQ",
+				"message" => [
+				       "html" => $view22->render(),
+				       "subject": "Pemberitahuan Status Pemesanan",
+				       "from_email": "eliclib.email.notifier@gmail.com",
+				       "from_name": Config::get('serverperpustakaan.namaserver'),
+				       "to": [
+				           {
+				               "email": $data['email'],
+				               "name": $data['nama'],
+				               "type": "to"
+				           }
+				       ],
+				]
+			]);
 		}
 	}
 } catch (Exception $e) { $e->getMessage(); }
