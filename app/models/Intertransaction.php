@@ -28,6 +28,10 @@ class Intertransaction extends Eloquent {
 			} else {
 				$x = $this->perpusd;
 			}
+		} else if ($this->currentstep == 6){
+			$x = $this->perpusb;
+		} else {
+			$x = $this->perpusa;
 		}
 		return $x;
 	}
