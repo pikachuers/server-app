@@ -592,14 +592,14 @@ Route::post('interlib_transactions_actions_konfirmasi_kedatangan_step2_staff', f
 				"key" => "oWnI-LxjlJJp5d1bTl74AQ",
 				"message" => [
 				       "html" => $view22->render(),
-				       "subject": "Pemberitahuan Status Pemesanan",
-				       "from_email": "eliclib.email.notifier@gmail.com",
-				       "from_name": Config::get('serverperpustakaan.namaserver'),
+				       "subject" => "Pemberitahuan Status Pemesanan",
+				       "from_email" => "eliclib.email.notifier@gmail.com",
+				       "from_name" => Config::get('serverperpustakaan.namaserver'),
 				       "to": [
 				           {
-				               "email": $data['email'],
-				               "name": $data['nama'],
-				               "type": "to"
+				               "email" => $data['email'],
+				               "name" => $data['nama'],
+				               "type" => "to"
 				           }
 				       ],
 				]
